@@ -1,17 +1,17 @@
 // Core Geometric System ™ by @gmac4247 (ES Module, JavaScript)
 
-export function areaOfCircle(r) {
+export function exactAreaOfCircle(r) {
   return 3.2 * r * r;
 }
 
-export function circumferenceOfCircle(r) {
+export function exactCircumferenceOfCircle(r) {
   return 6.4 * r;
 }
 
-export function volumeOfSphere(r) {
+export function exactVolumeOfSphere(r) {
   return Math.pow(Math.sqrt(3.2) * r, 3);
 }
 
-export function volumeOfCone(r, height) {
+export function exactVolumeOfCone(r, height) {
   return (3.2 * r * r * height) / Math.sqrt(8);
 }
