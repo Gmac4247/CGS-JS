@@ -1,0 +1,10 @@
+﻿{
+  "name": "Core Geometric System ™",
+  "version": "1.0.1",
+  "description": "Exact geometric formulas for area, circumference, and volume",
+    "type": "module",
+   "author": "Gaal Sandor",
+  "license": "MIT",
+  "keywords": ["geometry", "math", "ecact", "formulas"],
+ "main": "basic-geometry.js"
+ }
