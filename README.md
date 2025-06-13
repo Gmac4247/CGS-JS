@@ -4,7 +4,7 @@ Geometry Patch Java Script Library
 
 CommonJS and ES Module
 
-Exact formulas for calculating the 
+Exact formulas for calculating  
 - area of a circle 
 - circumference of a circle
 - volume of a sphere
@@ -17,7 +17,7 @@ Geometry Patch Java Script Library
 
 CommonJS and ES Module
 
-Exact formulas for calculating the 
+Exact formulas for calculating  
 - area of a circle 
 - circumference of a circle
 - volume of a sphere
