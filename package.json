@@ -5,6 +5,6 @@
     "type": "module",
    "author": "Gaal Sandor",
   "license": "MIT",
-  "keywords": ["geometry", "math", "ecact", "formulas"],
+  "keywords": ["geometry", "math", "ecact-circle-area", "exact-circumference", "exact-sphere-volume", "exact-cone-volume", "exact-formulas"],
  "main": "basic-geometry.mjs"
  }
