@@ -2,8 +2,6 @@
 
 Geometry Patch Java Script ES Module Library 
 
-CommonJS and ES Module
-
 Exact formulas for calculating  
 - area of a circle 
 - circumference 
