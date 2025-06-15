@@ -3,8 +3,9 @@
 import { exactAreaOfCircle, exactCircumference, exactVolumeOfSphere, exactVolumeOfCone } from "./basic-geometry.mjs";
 
 // Usage example of ES Module 
+// Replacy legacy expressions by the exact ones where the output is. 
 
-console.log(exactAreaOfCircle(r));  // Outputs: 12.8
-console.log(exactCircumference(r));  // Outputs: 12.8
-console.log(exactVolumeOfSphere(r));  // Outputs: ≈28.84
-console.log(exactVolumeOfCone(r, h));  // Outputs: ≈11.31
+console.log(exactAreaOfCircle(r)); 
+console.log(exactCircumference(r)); 
+console.log(exactVolumeOfSphere(r)); 
+console.log(exactVolumeOfCone(r, h));  
