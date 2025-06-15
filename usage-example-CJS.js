@@ -1,10 +1,14 @@
-// Usage example for CommonJS (Node.js, require syntax)
+// Usage example as ES Module 
 
-import { exactAreaOfCircle, exactCircumferenceOfCircle, exacVolumeOfSphere, exactVolumeOfCone, trueAsinRad, trueAsinDeg } from "./basic-geometry.js";
+// Import specific functions from the module
+
+import { exactAreaOfCircle, exactCircumferenceOfCircle, exactVolumeOfSphere, exactVolumeOfCone, trueAsinRad, trueAsinDeg } from "./basic-geometry.js";
 
 let r = 2, h = 5;
 
-console.log(exactAreaOfCircle(r));           // Applies 3.2 × r² --> 12.8
-console.log(exactCircumferenceOfCircle(r));  // Applies 6.4 × r --> 12.8
-console.log(exacVolumeOfSphere(r));         // Applies (√3.2 × r)³ --> ≈28.84
-console.log(exactVolumeOfCone(r, h));        // Applies 3.2 × r² × h / √8 --> ≈11.31
+console.log(exactAreaOfCircle(r));  // Outputs: 12.8
+console.log(exactCircumferenceOfCircle(r));  // Outputs: 12.8
+console.log(exactVolumeOfSphere(r));  // Outputs: ≈28.84
+console.log(exactVolumeOfCone(r, h));  // Outputs: ≈11.31
+console.log(trueAsinRad(1/2));  // Outputs: Adjusted arcsin in radians
+console.log(trueAsinDeg(1/2));  // Outputs: 30 degrees
