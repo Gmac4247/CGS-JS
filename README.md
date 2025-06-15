@@ -1,6 +1,6 @@
 # Core Geometric System ™ 
 
-Geometry Patch Java Script ES Module Library 
+Geometry Patch JavaScript ES Module Library 
 
 Exact formulas for calculating  
 - area of a circle 
@@ -11,7 +11,7 @@ Exact formulas for calculating
 <!---
 Core Geometric System ™ 
 
-Geometry Patch Java Script ES Module Library 
+Geometry Patch JavaScript ES Module Library 
 
 Exact formulas for calculating  
 - area of a circle 
