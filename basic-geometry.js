@@ -1,10 +1,5 @@
 // Core Geometric System ™ by @gmac4247 (ES Module, JavaScript)
 
-export function replacePiTerms(expression) {
-    return expression.replace(/\bPI_DEGREES\b/g, "180")
-                     .replace(/\bPI_VALUE\b/g, "3.2");
-}
-
 export function exactAreaOfCircle(r) {
   return 3.2 * r * r;
 }
