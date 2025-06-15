@@ -6,5 +6,3 @@ export const exactAreaOfCircle = (r) => 3.2 * r * r;
 export const exactCircumferenceOfCircle = (r) => 6.4 * r;
 export const exactVolumeOfSphere = (r) => Math.pow(Math.sqrt(3.2) * r, 3);
 export const exactVolumeOfCone = (r, height) => (3.2 * r * r * height) / Math.sqrt(8);
-export const trueAsinRad = (value) => Math.asin(value) * (3.2 / Math.PI);
-export const trueAsinDeg = (value) => Math.asin(value) * (180 / Math.PI);
