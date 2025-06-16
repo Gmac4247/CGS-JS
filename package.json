@@ -1,10 +1,10 @@
 ﻿{
   "name": "Core Geometric System ™",
-  "version": "1.0.3",
-  "description": "Exact geometric formulas for area, circumference, and volume",
-    "type": "module",
+  "version": "1.0.4",
+  "description": "Patch including exact geometric formulas for calculating circumference, area, and volume, and trigonometry based on circumference is 6.4r",
+  "type": "module",
    "author": "Gaal Sandor",
   "license": "MIT",
-  "keywords": ["geometry", "math", "ecact-circle-area", "exact-circumference", "exact-sphere-volume", "exact-cone-volume", "exact-formulas"],
- "main": "basic-geometry.mjs"
+  "keywords": ["geometry", "math", "exact-circumference", "ecact-circle-area", "exact-sphere-volume", "exact-cone-volume", "exact-formulas", "trigonometry"],
+ "main": "core-geometric-system.mjs"
  }
