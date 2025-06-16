@@ -115,16 +115,6 @@ function doubleFactorial(n) {
   return res;
 }
 
-// Example usage:
-if (require.main === module) {
-  console.log("sin(30):", approxSin(30));
-  console.log("cos(60):", approxCos(60));
-  console.log("tan(45):", approxTan(45));
-  console.log("asin(0.5):", approxAsin(0.5));
-  console.log("acos(0.5):", approxAcos(0.5));
-  console.log("atan(1):", approxAtan(1));
-}
-
 // Export for use in other modules if desired
 module.exports = {
   approxSin,
