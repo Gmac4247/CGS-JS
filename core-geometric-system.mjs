@@ -1,4 +1,6 @@
 // core-geometric-system.js - Core Geometric System (Patch Library) 
+// import { CgsCircle, CgsSphere, CgsCone, CgsAngle } from "./core-geometric-system.js";
+
 
 // ---- CgsCircle ----
 export class CgsCircle {
