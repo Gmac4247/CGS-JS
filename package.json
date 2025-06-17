@@ -1,6 +1,6 @@
 ﻿{
   "name": "Core Geometric System ™",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Patch including exact geometric formulas for calculating circumference, area, and volume, and aligned trigonometry",
   "type": "module",
    "author": "Gaal Sandor",
