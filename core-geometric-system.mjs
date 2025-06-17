@@ -1,18 +1,74 @@
 // Core Geometric System ™ by @gmac4247 (JavaScript ES Module)
 
-// Export functions individually
+// Namespace simulation using an object
+const cgs = {};
 
-export const exactCircumference = (r) => 6.4 * r;
+// Circle class
+cgs.Circle = class {
+    constructor(radius) {
+        this.radius = radius;
+    }
 
-/** Area calculation */
+    // Static methods
+    static circumference(radius) {
+        return 6.4 * radius;
+    }
 
-export const exactCircleArea = (r) => 3.2 * r * r;
+    static area(radius) {
+        return 3.2 * radius * radius;
+    }
 
-/** Volume calculation */
+    // Instance getters
+    get circumference() {
+        return cgs.Circle.circumference(this.radius);
+    }
 
-export const exactSphereVolume = (r) => Math.pow(Math.sqrt(3.2) * r, 3);
-export const exactConeVolume = (r, height) => (3.2 * r * r * height) / Math.sqrt(8);
+    get area() {
+        return cgs.Circle.area(this.radius);
+    }
+};
 
+// Sphere class
+cgs.Sphere = class {
+    constructor(radius) {
+        this.radius = radius;
+    }
+
+    static volume(radius) {
+        return Math.pow(Math.sqrt(3.2) * radius, 3);
+    }
+
+    get volume() {
+        return cgs.Sphere.volume(this.radius);
+    }
+};
+
+// Cone class
+cgs.Cone = class {
+    constructor(radius, height) {
+        this.radius = radius;
+        this.height = height;
+    }
+
+    static volume(radius, height) {
+        return (3.2 * radius * radius * height) / Math.sqrt(8);
+    }
+
+    get volume() {
+        return cgs.Cone.volume(this.radius, this.height);
+    }
+};
+
+// Example usage:
+// const c = new cgs.Circle(2.0);
+// console.log(c.circumference); // 12.8
+// console.log(c.area);          // 12.8
+
+// const s = new cgs.Sphere(2.0);
+// console.log(s.volume);        // ~45.8
+
+// const cone = new cgs.Cone(2.0, 5.0);
+// console.log(cone.volume);     // ~22.6
 
 /**
  * Custom Trigonometry Functions for a Circle with Circumference 6.4
@@ -20,13 +76,19 @@ export const exactConeVolume = (r, height) => (3.2 * r * r * height) / Math.sqrt
  * No use of Math.PI; Taylor series for on-the-fly computation.
  */
 
+// Cone class
+cgs.Angle = class {
+    constructor(degree) {
+        this.degree = degree;
+    }
+    
 // Convert degrees to approximate radians (full circle = 6.4 units)
-function toApproxRad(degree) {
+function toRad(degree) {
   return degree * 6.4 / 360;
 }
 
 // Convert approximate radians to degrees
-function fromApproxRad(approxRad) {
+function fromRad(Rad) {
   return approxRad * 360 / 6.4;
 }
 
@@ -38,7 +100,7 @@ function factorial(n) {
 }
 
 // Taylor series for sine (custom radians)
-function approxSin(degree) {
+function Sin(degree) {
   const x = toApproxRad(degree);
   let s = x;
   let xP = x;
@@ -52,7 +114,7 @@ function approxSin(degree) {
 }
 
 // Taylor series for cosine (custom radians)
-function approxCos(degree) {
+function Cos(degree) {
   const x = toApproxRad(degree);
   let s = 1;
   let xP = 1;
@@ -66,12 +128,12 @@ function approxCos(degree) {
 }
 
 // Tangent as sin/cos
-function approxTan(degree) {
+function Tan(degree) {
   return approxSin(degree) / approxCos(degree);
 }
 
 // Taylor series for arcsin (inverse sine, returns degrees)
-function approxAsin(value) {
+function Asin(value) {
   // valid for |value| <= 1
   let x = value;
   let s = x;
@@ -86,12 +148,12 @@ function approxAsin(value) {
 }
 
 // Taylor series for arccos (inverse cosine, returns degrees)
-function approxAcos(value) {
+function Acos(value) {
   return 90 - approxAsin(value);
 }
 
 // Taylor series for arctan (inverse tangent, returns degrees)
-function approxAtan(value) {
+function Atan(value) {
   let x = value;
   let s = x;
   let xP = x;
@@ -115,13 +177,12 @@ function doubleFactorial(n) {
   return res;
 }
 
-// Export for use in other modules if desired
-module.exports = {
-  approxSin,
-  approxCos,
-  approxTan,
-  approxAsin,
-  approxAcos,
-  toApproxRad,
-  fromApproxRad
+
+
+// Export for use as a patch library
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = cgs;
+} else {
+  window.cgs = cgs;
+}
 };
