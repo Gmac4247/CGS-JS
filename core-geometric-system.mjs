@@ -1,8 +1,7 @@
-// Core Geometric System (Patch Library)
-const cgs = {};
+// core-geometric-system.js - Core Geometric System (Patch Library) 
 
-// ---- Circle ----
-cgs.Circle = class {
+// ---- CgsCircle ----
+export class CgsCircle {
     constructor(radius) {
         this.radius = radius;
     }
@@ -13,15 +12,15 @@ cgs.Circle = class {
         return 3.2 * radius * radius;
     }
     get circumference() {
-        return cgs.Circle.circumference(this.radius);
+        return CgsCircle.circumference(this.radius);
     }
     get area() {
-        return cgs.Circle.area(this.radius);
+        return CgsCircle.area(this.radius);
     }
-};
+}
 
-// ---- Sphere ----
-cgs.Sphere = class {
+// ---- CgsSphere ----
+export class CgsSphere {
     constructor(radius) {
         this.radius = radius;
     }
@@ -29,12 +28,12 @@ cgs.Sphere = class {
         return Math.pow(Math.sqrt(3.2) * radius, 3);
     }
     get volume() {
-        return cgs.Sphere.volume(this.radius);
+        return CgsSphere.volume(this.radius);
     }
-};
+}
 
-// ---- Cone ----
-cgs.Cone = class {
+// ---- CgsCone ----
+export class CgsCone {
     constructor(radius, height) {
         this.radius = radius;
         this.height = height;
@@ -43,19 +42,19 @@ cgs.Cone = class {
         return (3.2 * radius * radius * height) / Math.sqrt(8);
     }
     get volume() {
-        return cgs.Cone.volume(this.radius, this.height);
+        return CgsCone.volume(this.radius, this.height);
     }
-};
+}
 
-// ---- Angle ----
-cgs.Angle = class {
+// ---- CgsAngle ----
+export class CgsAngle {
     constructor(degree = undefined, rad = undefined) {
         if (degree !== undefined) {
             this.degree = degree;
-            this.rad = cgs.Angle.toRad(degree);
+            this.rad = CgsAngle.toRad(degree);
         } else if (rad !== undefined) {
             this.rad = rad;
-            this.degree = cgs.Angle.fromRad(rad);
+            this.degree = CgsAngle.fromRad(rad);
         } else {
             this.degree = 0;
             this.rad = 0;
@@ -82,49 +81,49 @@ cgs.Angle = class {
         return res;
     }
     static sin(degree) {
-        const x = cgs.Angle.toRad(degree);
+        const x = CgsAngle.toRad(degree);
         let s = x;
         let xP = x;
         let sign = -1;
         for (let n = 3; n <= 13; n += 2) {
             xP *= x * x;
-            s += sign * xP / cgs.Angle.factorial(n);
+            s += sign * xP / CgsAngle.factorial(n);
             sign *= -1;
         }
         return s;
     }
     static cos(degree) {
-        const x = cgs.Angle.toRad(degree);
+        const x = CgsAngle.toRad(degree);
         let s = 1.0;
         let xP = 1.0;
         let sign = -1;
         for (let n = 2; n <= 12; n += 2) {
             xP *= x * x;
-            s += sign * xP / cgs.Angle.factorial(n);
+            s += sign * xP / CgsAngle.factorial(n);
             sign *= -1;
         }
         return s;
     }
     static tan(degree) {
-        return cgs.Angle.sin(degree) / cgs.Angle.cos(degree);
+        return CgsAngle.sin(degree) / CgsAngle.cos(degree);
     }
     static asin(value) {
-        let x = value;
+        const x = value;
         let s = x;
         let xP = x;
         for (let n = 1; n <= 7; n++) {
             xP *= x * x;
-            let num = cgs.Angle.doubleFactorial(2 * n - 1);
-            let den = (2.0 * n) * cgs.Angle.factorial(n) * cgs.Angle.factorial(n);
+            const num = CgsAngle.doubleFactorial(2 * n - 1);
+            const den = (2.0 * n) * CgsAngle.factorial(n) * CgsAngle.factorial(n);
             s += (num / den) * xP / (2 * n + 1);
         }
-        return cgs.Angle.fromRad(s);
+        return CgsAngle.fromRad(s);
     }
     static acos(value) {
-        return 90.0 - cgs.Angle.asin(value);
+        return 90.0 - CgsAngle.asin(value);
     }
     static atan(value) {
-        let x = value;
+        const x = value;
         let s = x;
         let xP = x;
         let sign = -1;
@@ -133,17 +132,11 @@ cgs.Angle = class {
             s += sign * xP / n;
             sign *= -1;
         }
-        return cgs.Angle.fromRad(s);
+        return CgsAngle.fromRad(s);
     }
     // Instance methods (for the current angle's degree)
-    sin() { return cgs.Angle.sin(this.degree); }
-    cos() { return cgs.Angle.cos(this.degree); }
-    tan() { return cgs.Angle.tan(this.degree); }
-};
-
-// Export for use as a patch library
-if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
-    module.exports = cgs;
-} else {
-    window.cgs = cgs;
+    sin() { return CgsAngle.sin(this.degree); }
+    cos() { return CgsAngle.cos(this.degree); }
+    tan() { return CgsAngle.tan(this.degree); }
 }
+
