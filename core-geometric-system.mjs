@@ -1,4 +1,4 @@
-// core-geometric-system.js - Core Geometric System (Patch Library) 
+// core-geometric-system.mjs - Core Geometric System (Patch Library) 
 // import { CgsCircle, CgsSphere, CgsCone } from "./core-geometric-system.mjs";
 
 
