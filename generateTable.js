@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 function generateTable() {
   const table = [];
   for (let deg = 0.0; deg <= 90.0; deg += 0.1) {
@@ -19,7 +18,7 @@ const unifiedTable = generateTable();
 const jsonData = JSON.stringify(unifiedTable, null, 2);
 
 try {
-  fs.writeFileSync('unifiedTable.json', jsonData);
+fs.writeFileSync('./unifiedTable.json', jsonData); // Creates the file in the current directory
   console.log('The table has been generated and saved to unifiedTable.json');
 } catch (err) {
   console.error('An error occurred while writing the file:', err);
