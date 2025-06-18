@@ -1,4 +1,4 @@
-const fs = require('fs'); // Import the 'fs' module for file system operations
+const fs = require('fs');
 
 function generateTable() {
   const table = [];
@@ -16,11 +16,11 @@ function generateTable() {
 }
 
 const unifiedTable = generateTable();
+const jsonData = JSON.stringify(unifiedTable, null, 2);
 
-// Convert the table to a JSON string
-const jsonData = JSON.stringify(unifiedTable, null, 2); // Use 'null, 2' for pretty printing
-
-// Write the JSON data to a file
-fs.writeFileSync('unifiedTable.json', jsonData);
-
-console.log('The table has been generated and saved to unifiedTable.json');
+try {
+  fs.writeFileSync('unifiedTable.json', jsonData);
+  console.log('The table has been generated and saved to unifiedTable.json');
+} catch (err) {
+  console.error('An error occurred while writing the file:', err);
+}
