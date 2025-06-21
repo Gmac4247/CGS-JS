@@ -47,3 +47,11 @@ export class CgsCone {
         return CgsCone.volume(this.radius, this.height);
     }
 }
+
+// ---- Trigonometry ----
+fetch('trig.json')
+  .then(response => response.json())
+  .then(data => {
+    const trig = data;
+
+  });
