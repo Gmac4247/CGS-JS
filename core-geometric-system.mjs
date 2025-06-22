@@ -1,7 +1,7 @@
 // core-geometric-system.mjs - Core Geometric System (Patch Library) 
 
 
-// ---- CgsCircle ----
+// ---- Area of a Circle ----
 export class CgsCircle {
     constructor(radius) {
         this.radius = radius;
@@ -20,7 +20,8 @@ export class CgsCircle {
     }
 }
 
-// ---- CgsSphere ----
+
+// ---- Volume of a Sphere ----
 export class CgsSphere {
     constructor(radius) {
         this.radius = radius;
@@ -33,7 +34,30 @@ export class CgsSphere {
     }
 }
 
-// ---- CgsCone ----
+
+// ---- Volume of a Spherical Cap ----
+export class CgsSphericalCap {
+  constructor(rCap, rSphere, trig) {
+    this.rCap = rCap;
+    this.rSphere = rSphere;
+    this.trig = trig;
+  }
+
+  get volume() {
+    const ratio = this.rCap / this.rSphere;
+    const acosExpr = `acos(${ratio})`;
+    const angleStr = queryAcos(acosExpr, this.trig);
+    const angleNum = parseFloat(angleStr.match(/rad\\(([^)]+)\\)/)?.[1]);
+    const sine = parseFloat(
+      querySin(`sin(${angleNum})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
+    );
+
+    return 1.6 * this.rCap ** 2 * Math.sqrt(3.2) * (1 - sine);
+  }
+}
+
+
+// ---- Volume of a Cone ----
 export class CgsCone {
     constructor(radius, height) {
         this.radius = radius;
@@ -47,6 +71,7 @@ export class CgsCone {
     }
 }
 
+
 // ---- Trigonometry ----
 fetch('trig.json')
   .then(response => response.json())
@@ -54,6 +79,7 @@ fetch('trig.json')
     const trig = data;
 
   });
+
 
 // Helper: Finds closest rad(x) match for given function (sin or cos)
 export function findClosestRad(value, trig, funcType) {
