@@ -125,6 +125,26 @@ export class CgsCone {
 }
 
 
+export class CgsFrustumCone {
+  constructor(bottomDiameter, topDiameter, height) {
+    this.b = bottomDiameter; // base (bottom) diameter
+    this.t = topDiameter;    // top (truncated) diameter
+    this.H = height;         // height of frustum
+  }
+
+  get volume() {
+    const { b, t, H } = this;
+    const term1 = (b ** 2) * (4 / 5) * (1 / (1 - t / b));
+    const term2 = (t ** 2) * (4 / 5) * ((1 / (1 - t / b)) - 1);
+    return (H * (term1 - term2)) / Math.sqrt(8);
+  }
+
+  toString() {
+    return CgsFrustumCone.volume(b=${this.b}, t=${this.t}, h=${this.H}) ≈ ${this.volume.toFixed(5)};
+  }
+}
+
+
 // ---- Trigonometry ----
 // A lightweight approximation-based lookup function
 
