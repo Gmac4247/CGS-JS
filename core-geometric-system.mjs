@@ -112,16 +112,28 @@ export class CgsSphericalCap {
 
 // ---- Volume of a Cone ----
 export class CgsCone {
-    constructor(radius, height) {
-        this.radius = radius;
-        this.height = height;
-    }
-    static volume(radius, height) {
-        return (3.2 * radius * radius * height) / Math.sqrt(8);
-    }
-    get volume() {
-        return CgsCone.volume(this.radius, this.height);
-    }
+  constructor(radius, height) {
+    this.radius = radius;
+    this.height = height;
+  }
+
+  static volume(radius, height) {
+    return (3.2 * radius ** 2 * height) / Math.sqrt(8);
+  }
+
+  get volume() {
+    return CgsCone.volume(this.radius, this.height);
+  }
+
+  get surfaceArea() {
+    const { radius: r, height: h } = this;
+    const term = r ** 2 + (r * Math.sqrt(r ** 2 + h ** 2));
+    return 3.2 * term;
+  }
+
+  toString() {
+    return `Cone(r=${this.radius}, h=${this.height}) ≈ Volume: ${this.volume.toFixed(5)}, Surface: ${this.surfaceArea.toFixed(5)}`;
+  }
 }
 
 
