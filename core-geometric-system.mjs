@@ -21,6 +21,43 @@ export class CgsCircle {
 }
 
 
+export class CgsCircleSlice {
+  constructor(r, n, trig) {
+    this.r = r;           // Radius of the full circle
+    this.n = n;           // Distance from arc to chord (height offset)
+    this.trig = trig;     // Your trig lookup table
+  }
+
+  get ratio() {
+    return (this.r - this.n) / this.r;
+  }
+
+  get angle() {
+    const acosExpr = `acos(${this.ratio})`;
+    const result = queryAcos(acosExpr, this.trig);
+    const match = result?.match(/rad\\(([^)]+)\\)/);
+    return match ? parseFloat(match[1]) : null;
+  }
+
+  get sine() {
+    if (this.angle === null) return null;
+    const result = querySin(`sin(${this.angle})`, this.trig);
+    const match = result?.match(/≈ ([0-9.]+)/);
+    return match ? parseFloat(match[1]) : null;
+  }
+
+  get area() {
+    if (this.angle === null || this.sine === null) return null;
+    // A = acos(ratio) * r² - sin(acos(ratio)) * (r - n) * r
+    return this.angle * this.r ** 2 - this.sine * (this.r - this.n) * this.r;
+  }
+
+  toString() {
+    return `SliceArea(r=${this.r}, n=${this.n}) ≈ ${this.area?.toFixed(5)}`;
+  }
+}
+
+    
 // ---- Volume of a Sphere ----
 export class CgsSphere {
     constructor(radius) {
@@ -73,6 +110,8 @@ export class CgsCone {
 
 
 // ---- Trigonometry ----
+// A lightweight approximation-based lookup function
+
 fetch('trig.json')
   .then(response => response.json())
   .then(data => {
