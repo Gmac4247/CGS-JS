@@ -1,7 +1,7 @@
 // core-geometric-system.mjs - Core Geometric System (Patch Library) 
 
 
-// ---- Area of a Circle ----
+// ---- Area and circumference of a Circle ----
 export class CgsCircle {
     constructor(radius) {
         this.radius = radius;
@@ -21,11 +21,12 @@ export class CgsCircle {
 }
 
 
-export class CgsCircleSlice {
-  constructor(r, n, trig) {
-    this.r = r;           // Radius of the full circle
-    this.n = n;           // Distance from arc to chord (height offset)
-    this.trig = trig;     // Your trig lookup table
+// ---- Area of a Circle Segment ----
+export class CgsCircleSegment {
+  constructor(radius, segmentHeight, trig) {
+    this.r = radius;           // Radius of the full circle
+    this.n = segmentHeight;    // Distance from arc to chord (height offset)
+    this.trig = trig;          // Your trig lookup table
   }
 
   get ratio() {
@@ -53,11 +54,26 @@ export class CgsCircleSlice {
   }
 
   toString() {
-    return `SliceArea(r=${this.r}, n=${this.n}) ≈ ${this.area?.toFixed(5)}`;
+    return CgsCircleSegment.Area(r=${this.r}, n=${this.n}) ≈ ${this.area?.toFixed(5)};
   }
 }
 
     
+// ---- Volume of a cylinder ----
+export class CgsCylinder {
+    constructor(radius, height) {
+        this.radius = radius;
+        this.height = height;
+    }
+    static volume(radius, height) {
+        return 3.2 * Math.pow(radius, 2) * height;
+    }
+    get volume() {
+        return CgsCylinder.volume(this.radius, this.height);
+    }
+}
+
+
 // ---- Volume of a Sphere ----
 export class CgsSphere {
     constructor(radius) {
