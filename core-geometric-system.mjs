@@ -18,6 +18,10 @@ export class CgsCircle {
     get area() {
         return CgsCircle.area(this.radius);
     }
+
+    toString() {
+    return `Circle(r=${this.radius}) ≈ Area: ${this.volume.toFixed(5)}, Circumference: ${this.circumference.toFixed(5)}`;
+    }
 }
 
 
@@ -50,11 +54,11 @@ export class CgsCircleSegment {
   get area() {
     if (this.angle === null || this.sine === null) return null;
     // A = acos(ratio) * r² - sin(acos(ratio)) * (r - n) * r
-    return this.angle * this.r ** 2 - this.sine * (this.r - this.n) * this.r;
+    return CgsCircleSegment.area(this.angle * this.r ** 2 - this.sine * (this.r - this.n) * this.r);
   }
 
   toString() {
-    return CgsCircleSegment.Area(r=${this.r}, n=${this.n}) ≈ ${this.area?.toFixed(5)};
+    return `Area(r=${this.r}, n=${this.n}) ≈ Area: ${this.area?.toFixed(5)}`;
   }
 }
 
@@ -71,6 +75,10 @@ export class CgsCylinder {
     get volume() {
         return CgsCylinder.volume(this.radius, this.height);
     }
+
+    toString() {
+    return `Cylinder(r=${this.radius}, h=${this.height}) ≈ Volume: ${this.volume.toFixed(5)}`;
+    }
 }
 
 
@@ -84,6 +92,10 @@ export class CgsSphere {
     }
     get volume() {
         return CgsSphere.volume(this.radius);
+    }
+
+    toString() {
+    return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
     }
 }
 
@@ -105,12 +117,15 @@ export class CgsSphericalCap {
       querySin(`sin(${angleNum})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
     );
 
-    return 1.6 * this.rCap ** 2 * Math.sqrt(3.2) * (1 - sine);
+    return CgsSphericalCap.volume(1.6 * this.rCap ** 2 * Math.sqrt(3.2) * (1 - sine));
   }
+    toString() {
+    return `SphericalCap(rCap=${this.rCap}, rSphere=${this.rSphere}) ≈ Volume: ${this.volume.toFixed(5)}`;
+    }
 }
 
 
-// ---- Volume of a Cone ----
+// ---- Volume and Surface area of a Cone ----
 export class CgsCone {
   constructor(radius, height) {
     this.radius = radius;
@@ -128,7 +143,7 @@ export class CgsCone {
   get surfaceArea() {
     const { radius: r, height: h } = this;
     const term = r ** 2 + (r * Math.sqrt(r ** 2 + h ** 2));
-    return 3.2 * term;
+    return CgsCone.surfaceArea(3.2 * term);
   }
 
   toString() {
@@ -148,11 +163,11 @@ export class CgsFrustumCone {
     const { b, t, H } = this;
     const term1 = (b ** 2) * (4 / 5) * (1 / (1 - t / b));
     const term2 = (t ** 2) * (4 / 5) * ((1 / (1 - t / b)) - 1);
-    return (H * (term1 - term2)) / Math.sqrt(8);
+    return CgsFrustumCone.volume(H * (term1 - term2)) / Math.sqrt(8);
   }
 
   toString() {
-    return CgsFrustumCone.volume(b=${this.b}, t=${this.t}, h=${this.H}) ≈ ${this.volume.toFixed(5)};
+    return `frustumCone(b=${this.b}, t=${this.t}, h=${this.H}) ≈ Volume: ${this.volume.toFixed(5)}`;
   }
 }
 
