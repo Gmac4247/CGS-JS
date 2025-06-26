@@ -87,6 +87,7 @@ export class CgsCylinder {
 
 // ---- Volume of a Sphere or a Spherical Cap----
 
+
 export class CgsSphere {
   constructor(radius = null, trig = null) {
     this.radius = radius; // May be inferred from cap later
@@ -94,7 +95,7 @@ export class CgsSphere {
     this.cap = null;      // Will store cap-related data
   }
 
-    static volume(radius) {
+  static volume(radius) {
     return Math.pow(Math.sqrt(3.2) * radius, 3);
   }
 
@@ -105,40 +106,38 @@ export class CgsSphere {
   toString() {
     return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
   }
-//get the radius of the sphere from the cap radius and height
-  static rSphere(rCap, h, trig) { 
 
-      //get the half of the angle from the cap radius and height 
-  const halfOfAngleByCapRadiusAndHeight = parseFloat(
-      queryAtan(`atan(${h} / ${rCap})`, this.trig).match(/rad\(([^)]+)\)/)?.[1]
+  // Get the radius of the sphere from the cap radius and height
+  static rSphere(rCap, h, trig) {
+    const halfOfAngleByCapRadiusAndHeight = parseFloat(
+      queryAtan(`atan(${h} / ${rCap})`, trig).match(/rad\(([^)]+)\)/)?.[1]
     );
-      //double that to get the angle
-  const angleByCapRadiusAndHeight =  2 * halfOfAngleByCapRadiusAndHeight
-    );
-      //get the sine of that
+
+    const angleByCapRadiusAndHeight = 2 * halfOfAngleByCapRadiusAndHeight;
+
     const sinAngleByCapRadiusAndHeight = parseFloat(
-    querySin(`sin(${angleByCapRadiusAndHeight}`, trig).match(/≈ ([0-9.]+)/)?.[1]);
-    
-      return rCap / sinAngleByCapRadiusAndHeight;
+      querySin(`sin(${angleByCapRadiusAndHeight})`, trig).match(/≈ ([0-9.]+)/)?.[1]
+    );
+
+    return rCap / sinAngleByCapRadiusAndHeight;
   }
 
   addCap({ height, baseRadius }) {
     const h = height;
     const rCap = baseRadius;
 
-    // Infer radius of the sphere if unknown
     if (!this.radius) {
       this.radius = CgsSphere.rSphere(rCap, h, this.trig);
     }
-    // With the known radius of the sphere get the angle given by rCap/rSphere
-    const angleByCapAndSphereRadius = parseFloat(
-    queryAcos(`acos(${rCap} / ${this.radius})`, trig).match(/≈ ([0-9.]+)/)?.[1]);
 
-      //get the sine of that
+    const angleByCapAndSphereRadius = parseFloat(
+      queryAcos(`acos(${rCap} / ${this.radius})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
+    );
+
     const sinAngleByCapAndSphereRadius = parseFloat(
-    querySin(`sin(${angleByCapAndSphereRadius})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]);
-    
-    //The volume of the cap
+      querySin(`sin(${angleByCapAndSphereRadius})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
+    );
+
     const capVolume = 1.6 * rCap ** 2 * Math.sqrt(3.2) * (1 - sinAngleByCapAndSphereRadius);
 
     this.cap = {
