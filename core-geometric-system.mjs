@@ -2,6 +2,7 @@
 
 
 // ---- Area and circumference of a Circle ----
+
 export class CgsCircle {
     constructor(radius) {
         this.radius = radius;
@@ -26,6 +27,7 @@ export class CgsCircle {
 
 
 // ---- Area of a Circle Segment ----
+
 export class CgsCircleSegment {
   constructor(radius, segmentHeight, trig) {
     this.r = radius;           // Radius of the full circle
@@ -64,6 +66,7 @@ export class CgsCircleSegment {
 
     
 // ---- Volume of a cylinder ----
+
 export class CgsCylinder {
     constructor(radius, height) {
         this.radius = radius;
@@ -82,50 +85,73 @@ export class CgsCylinder {
 }
 
 
-// ---- Volume of a Sphere ----
+// ---- Volume of a Sphere or a Spherical Cap----
+
 export class CgsSphere {
-    constructor(radius) {
-        this.radius = radius;
-    }
+  constructor(radius = null, trig = null) {
+    this.radius = radius; // May be inferred from cap later
+    this.trig = trig;     // The CGS trig engine
+    this.cap = null;      // Will store cap-related data
+  }
+
     static volume(radius) {
-        return Math.pow(Math.sqrt(3.2) * radius, 3);
-    }
-    get volume() {
-        return CgsSphere.volume(this.radius);
-    }
-
-    toString() {
-    return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
-    }
-}
-
-
-// ---- Volume of a Spherical Cap ----
-export class CgsSphericalCap {
-  constructor(rCap, rSphere, trig) {
-    this.rCap = rCap;
-    this.rSphere = rSphere;
-    this.trig = trig;
+    return Math.pow(Math.sqrt(3.2) * radius, 3);
   }
 
   get volume() {
-    const ratio = this.rCap / this.rSphere;
-    const acosExpr = `acos(${ratio})`;
-    const angleStr = queryAcos(acosExpr, this.trig);
-    const angleNum = parseFloat(angleStr.match(/rad\\(([^)]+)\\)/)?.[1]);
-    const sine = parseFloat(
-      querySin(`sin(${angleNum})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
+    return CgsSphere.volume(this.radius);
+  }
+
+  toString() {
+    return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
+  }
+
+  static rSphereFromCap(rCap, h, trig) { 
+    const angleByHeight = `2atan(${h}/${rCap})`;
+    const sinExpr = `sin(${angleByHeight})`;
+    const sine = parseFloat(querySin(sinExpr, trig).match(/≈ ([0-9.]+)/)?.[1]);
+    return rCap / sine;
+  }
+
+  addCap({ height, baseRadius }) {
+    const h = height;
+    const rCap = baseRadius;
+
+    // Infer radius of the sphere if unknown
+    if (!this.radius) {
+      this.radius = CgsSphere.rSphereFromCap(rCap, h, this.trig);
+    }
+
+    //Intermediate calculations for the volume of the cap.
+    const angleByCapRadiusAndHeight = parseFloat(
+      queryAtan(`atan(${h} / ${rCap})`, this.trig).match(/rad\(([^)]+)\)/)?.[1]
     );
 
-    return CgsSphericalCap.volume(1.6 * this.rCap ** 2 * Math.sqrt(3.2) * (1 - sine));
-  }
+    const angleByCapAndSphereRadius = `1.6 - 2atan(${h}/${rCap})`;
+
+    const SineOfAngleByCapAndSphereRadius = parseFloat(
+      querySin(`sin(${angleByCapAndSphereRadius})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
+    );
+
+    //The volume of the cap
+    const capVolume = 1.6 * rCap ** 2 * Math.sqrt(3.2) * (1 - SineOfAngleByCapAndSphereRadius);
+
+    this.cap = {
+      h,
+      rCap,
+      SineOfAngleByCapAndSphereRadius,
+      capVolume
+    };
+    
     toString() {
-    return `SphericalCap(rCap=${this.rCap}, rSphere=${this.rSphere}) ≈ Volume: ${this.volume.toFixed(5)}`;
+    return `SphericalCap(radius=${this.rCap}, height=${this.h}) ≈ Volume: ${this.capVolume.toFixed(5)}`;
     }
+  }
 }
 
 
 // ---- Volume and Surface area of a Cone ----
+
 export class CgsCone {
   constructor(radius, height) {
     this.radius = radius;
