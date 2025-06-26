@@ -113,8 +113,7 @@ export class CgsSphere {
       queryAtan(`atan(${h} / ${rCap})`, this.trig).match(/rad\(([^)]+)\)/)?.[1]
     );
       //double that to get the angle
-  const angleByCapRadiusAndHeight = parseFloat(
-      `2 * atan(${halfOfAngleByCapRadiusAndHeight}`, trig).match(/rad\(([^)]+)\)/)?.[1]
+  const angleByCapRadiusAndHeight =  2 * halfOfAngleByCapRadiusAndHeight
     );
       //get the sine of that
     const sinAngleByCapRadiusAndHeight = parseFloat(
@@ -131,13 +130,13 @@ export class CgsSphere {
     if (!this.radius) {
       this.radius = CgsSphere.rSphere(rCap, h, this.trig);
     }
-    // get the angle given by rCap/rSphere
+    // With the known radius of the sphere get the angle given by rCap/rSphere
     const angleByCapAndSphereRadius = parseFloat(
-    queryAcos(`acos(${rCap} / ${radius})`, trig).match(/≈ ([0-9.]+)/)?.[1]);
+    queryAcos(`acos(${rCap} / ${this.radius})`, trig).match(/≈ ([0-9.]+)/)?.[1]);
 
       //get the sine of that
     const sinAngleByCapAndSphereRadius = parseFloat(
-    querySin(`sin(${angleByCapAndSphereRadius})`, trig).match(/≈ ([0-9.]+)/)?.[1]);
+    querySin(`sin(${angleByCapAndSphereRadius})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]);
     
     //The volume of the cap
     const capVolume = 1.6 * rCap ** 2 * Math.sqrt(3.2) * (1 - sinAngleByCapAndSphereRadius);
@@ -145,12 +144,11 @@ export class CgsSphere {
     this.cap = {
       h,
       rCap,
-      capVolume
+      capVolume,
+      toString() {
+        return `SphericalCap(radius=${rCap}, height=${h}) ≈ Volume: ${capVolume.toFixed(5)}`;
+      }
     };
-    
-    toString() {
-    return `SphericalCap(radius=${this.rCap}, height=${this.h}) ≈ Volume: ${this.capVolume.toFixed(5)}`;
-    }
   }
 }
 
