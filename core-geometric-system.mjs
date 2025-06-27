@@ -130,15 +130,8 @@ export class CgsSphere {
       this.radius = CgsSphere.rSphere(rCap, h, this.trig);
     }
 
-    const angleByCapAndSphereRadius = parseFloat(
-      queryAcos(`acos(${rCap} / ${this.radius})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
-    );
 
-    const sinAngleByCapAndSphereRadius = parseFloat(
-      querySin(`sin(${angleByCapAndSphereRadius})`, this.trig).match(/≈ ([0-9.]+)/)?.[1]
-    );
-
-    const capVolume = 1.6 * rCap ** 2 * Math.sqrt(3.2) * (1 - sinAngleByCapAndSphereRadius);
+    const capVolume = 1.6 * rCap ** 2 * Math.sqrt(3.2) * h;
 
     this.cap = {
       h,
