@@ -142,6 +142,9 @@ export class CgsSphere {
       }
     };
   }
+    get capVolume() {
+  return this.cap?.capVolume ?? null;
+    }
 }
 
 
