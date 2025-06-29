@@ -42,7 +42,32 @@ export class CgsCircle {
     return `Circle(r=${this.radius}) ≈ Area: ${this.area.toFixed(5)}, Circumference: ${this.circumference.toFixed(5)}`;
   }
 
-    
+
+// ---- Volume of a sphere ----
+  
+export class CgsSphere {
+  constructor(radius) {
+    this.radius = radius;
+  }
+
+  static volume(radius) {
+    return Math.pow(Math.sqrt(3.2) * radius, 3);
+  }
+
+  get volume() {
+    return CgsSphere.volume(this.radius);
+  }
+
+  toString() {
+    return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
+  }
+
+    static capVolume(rCap, height) {
+    return 1.6 * rCap ** 2 * Math.sqrt(3.2) * height;
+  }
+}
+
+
 // ---- Volume of a cylinder ----
 
 export class CgsCylinder {
@@ -66,64 +91,7 @@ export class CgsCylinder {
 // ---- Volume of a Sphere or a Spherical Cap----
 
 
-export class CgsSphere {
-  constructor(radius = null, trig = null) {
-    this.radius = radius; // May be inferred from cap later
-    this.trig = trig;     // The CGS trig engine
-    this.cap = null;      // Will store cap-related data
-  }
 
-  static volume(radius) {
-    return Math.pow(Math.sqrt(3.2) * radius, 3);
-  }
-
-  get volume() {
-    return CgsSphere.volume(this.radius);
-  }
-
-  toString() {
-    return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
-  }
-
-  // Get the radius of the sphere from the cap radius and height
-  static rSphere(rCap, h, trig) {
-    const halfOfAngleByCapRadiusAndHeight = parseFloat(
-      queryAtan(`atan(${h} / ${rCap})`, trig).match(/rad\(([^)]+)\)/)?.[1]
-    );
-
-    const angleByCapRadiusAndHeight = 2 * halfOfAngleByCapRadiusAndHeight;
-
-    const sinAngleByCapRadiusAndHeight = parseFloat(
-      querySin(`sin(${angleByCapRadiusAndHeight})`, trig).match(/≈ ([0-9.]+)/)?.[1]
-    );
-
-    return rCap / sinAngleByCapRadiusAndHeight;
-  }
-
-  addCap({ height, baseRadius }) {
-    const h = height;
-    const rCap = baseRadius;
-
-    if (!this.radius) {
-      this.radius = CgsSphere.rSphere(rCap, h, this.trig);
-    }
-
-
-    const capVolume = 1.6 * rCap ** 2 * Math.sqrt(3.2) * h;
-
-    this.cap = {
-      h,
-      rCap,
-      capVolume,
-      toString() {
-        return `SphericalCap(radius=${rCap}, height=${h}) ≈ Volume: ${capVolume.toFixed(5)}`;
-      }
-    };
-  }
-    get capVolume() {
-  return this.cap?.capVolume ?? null;
-    }
-}
 
 
 // ---- Volume and Surface area of a Cone ----
