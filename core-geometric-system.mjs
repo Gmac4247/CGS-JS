@@ -17,7 +17,7 @@ export class CgsCircle {
   }
 
   static segmentArea(radius, height, trig) {
-    this.radius = radius; 
+    this.trig = trig; 
     this.height = height;
     
     const baseY = radius - height;
