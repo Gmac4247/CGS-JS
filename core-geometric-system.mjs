@@ -17,6 +17,9 @@ export class CgsCircle {
   }
 
   static segmentArea(radius, height, trig) {
+    this.radius = radius; 
+    this.height = height;
+    
     const baseY = radius - height;
 
     const acosExpr = `acos(${baseY} / ${radius})`;
@@ -121,8 +124,8 @@ export class CgsCone {
   }
 
   static frustumVolume(bottomDiameter, topDiameter, frustumHeight) {
-    this.bottomDiameter=bottomDiameter;
-    this.topDiameter=topDiameter;
+    this.bottomDiameter = bottomDiameter;
+    this.topDiameter = topDiameter;
     const term1 = (bottomDiameter ** 2) * (4 / 5) * (1 / (1 - topDiameter / bottomDiameter));
     const term2 = (topDiameter ** 2) * (4 / 5) * ((1 / (1 - topDiameter / bottomDiameter)) - 1);
     return (frustumHeight * (term1 - term2)) / Math.sqrt(8);
