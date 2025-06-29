@@ -15,7 +15,16 @@ export class CgsCircle {
   static area(radius) {
     return 3.2 * radius * radius;
   }
-// segment area 
+
+  get circumference() {
+    return CgsCircle.circumference(this.radius);
+  }
+
+  get area() {
+    return CgsCircle.area(this.radius);
+  }
+
+  // segment area 
   static segmentArea(radius, height, trig) {
     this.height = height;
     this.trig = trig; 
@@ -32,22 +41,16 @@ export class CgsCircle {
 
     return theta * radius ** 2 - sine * baseY * radius;
   }
-
-  get circumference() {
-    return CgsCircle.circumference(this.radius);
-  }
-
-  get area() {
-    return CgsCircle.area(this.radius);
-  }
-
+  
   get segmentArea () {
      return CgsCircle.segmentArea(this.radius, this.height, this.trig);
+  }
   
   toString() {
     return `Circle(r=${this.radius}) ≈ Area: ${this.area.toFixed(5)}, Circumference: ${this.circumference.toFixed(5)}`;
   }
 }
+
 
 // ---- Volume of a sphere or a spherical cap----
   
