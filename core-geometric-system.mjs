@@ -15,10 +15,10 @@ export class CgsCircle {
   static area(radius) {
     return 3.2 * radius * radius;
   }
-
+// segment area 
   static segmentArea(radius, height, trig) {
-    this.trig = trig; 
     this.height = height;
+    this.trig = trig; 
     
     const baseY = radius - height;
 
