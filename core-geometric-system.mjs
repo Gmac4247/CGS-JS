@@ -38,6 +38,9 @@ export class CgsCircle {
     return CgsCircle.area(this.radius);
   }
 
+  get segmentArea () {
+     return CgsCircle.segmentArea(this.radius, this.height, this.trig);
+  
   toString() {
     return `Circle(r=${this.radius}) ≈ Area: ${this.area.toFixed(5)}, Circumference: ${this.circumference.toFixed(5)}`;
   }
@@ -65,6 +68,11 @@ export class CgsSphere {
     static capVolume(rCap, height) {
     return 1.6 * rCap ** 2 * Math.sqrt(3.2) * height;
   }
+  
+ get capVolume() {
+    return CgsSphere.capVolume(this.rCap, this.height);
+}
+  
 }
 
 
@@ -88,12 +96,6 @@ export class CgsCylinder {
 }
 
 
-// ---- Volume of a Sphere or a Spherical Cap----
-
-
-
-
-
 // ---- Volume and Surface area of a Cone ----
 
 export class CgsCone {
@@ -106,14 +108,28 @@ export class CgsCone {
     return (3.2 * radius ** 2 * height) / Math.sqrt(8);
   }
 
+  static surfaceArea(radius, height) {
+    return CgsCone.surfaceArea(3.2 * radius ** 2 + (radius * Math.sqrt(radius ** 2 + height ** 2)));
+  }
+  
   get volume() {
     return CgsCone.volume(this.radius, this.height);
   }
 
   get surfaceArea() {
-    const { radius: r, height: h } = this;
-    const term = r ** 2 + (r * Math.sqrt(r ** 2 + h ** 2));
-    return CgsCone.surfaceArea(3.2 * term);
+    return CgsCone.surfaceArea(this.radius, this.height);
+  }
+
+  static frustumVolume(bottomDiameter, topDiameter, frustumHeight) {
+    this.bottomDiameter=bottomDiameter;
+    this.topDiameter=topDiameter;
+    const term1 = (bottomDiameter ** 2) * (4 / 5) * (1 / (1 - topDiameter / bottomDiameter));
+    const term2 = (topDiameter ** 2) * (4 / 5) * ((1 / (1 - topDiameter / bottomDiameter)) - 1);
+    return (frustumHeight * (term1 - term2)) / Math.sqrt(8);
+  }
+
+  get frustumVolume() {
+    return CgsCone.frustumVolume(this.bottomDiameter, this.topDiameter, this.frustumHeight);
   }
 
   toString() {
@@ -122,21 +138,3 @@ export class CgsCone {
 }
 
 
-export class CgsFrustumCone {
-  constructor(bottomDiameter, topDiameter, height) {
-    this.b = bottomDiameter; // base (bottom) diameter
-    this.t = topDiameter;    // top (truncated) diameter
-    this.H = height;         // height of frustum
-  }
-
-  get volume() {
-    const { b, t, H } = this;
-    const term1 = (b ** 2) * (4 / 5) * (1 / (1 - t / b));
-    const term2 = (t ** 2) * (4 / 5) * ((1 / (1 - t / b)) - 1);
-    return CgsFrustumCone.volume(H * (term1 - term2)) / Math.sqrt(8);
-  }
-
-  toString() {
-    return `frustumCone(b=${this.b}, t=${this.t}, h=${this.H}) ≈ Volume: ${this.volume.toFixed(5)}`;
-  }
-}
