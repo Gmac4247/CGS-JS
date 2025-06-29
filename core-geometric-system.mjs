@@ -41,9 +41,9 @@ export class CgsCircle {
   toString() {
     return `Circle(r=${this.radius}) ≈ Area: ${this.area.toFixed(5)}, Circumference: ${this.circumference.toFixed(5)}`;
   }
+}
 
-
-// ---- Volume of a sphere ----
+// ---- Volume of a sphere or a spherical cap----
   
 export class CgsSphere {
   constructor(radius) {
@@ -61,7 +61,7 @@ export class CgsSphere {
   toString() {
     return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
   }
-
+//cap volume 
     static capVolume(rCap, height) {
     return 1.6 * rCap ** 2 * Math.sqrt(3.2) * height;
   }
