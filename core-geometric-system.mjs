@@ -4,65 +4,43 @@
 // ---- Area and circumference of a Circle ----
 
 export class CgsCircle {
-    constructor(radius) {
-        this.radius = radius;
-    }
-    static circumference(radius) {
-        return 6.4 * radius;
-    }
-    static area(radius) {
-        return 3.2 * radius * radius;
-    }
-    get circumference() {
-        return CgsCircle.circumference(this.radius);
-    }
-    get area() {
-        return CgsCircle.area(this.radius);
-    }
-
-    toString() {
-    return `Circle(r=${this.radius}) ≈ Area: ${this.volume.toFixed(5)}, Circumference: ${this.circumference.toFixed(5)}`;
-    }
-}
-
-
-// ---- Area of a Circle Segment ----
-
-export class CgsCircleSegment {
-  constructor(radius, segmentHeight, trig) {
-    this.r = radius;           // Radius of the full circle
-    this.n = segmentHeight;    // Distance from arc to chord (height offset)
-    this.trig = trig;          // Your trig lookup table
+  constructor(radius) {
+    this.radius = radius;
   }
 
-  get ratio() {
-    return (this.r - this.n) / this.r;
+  static circumference(radius) {
+    return 6.4 * radius;
   }
 
-  get angle() {
-    const acosExpr = `acos(${this.ratio})`;
-    const result = queryAcos(acosExpr, this.trig);
-    const match = result?.match(/rad\\(([^)]+)\\)/);
-    return match ? parseFloat(match[1]) : null;
+  static area(radius) {
+    return 3.2 * radius * radius;
   }
 
-  get sine() {
-    if (this.angle === null) return null;
-    const result = querySin(`sin(${this.angle})`, this.trig);
-    const match = result?.match(/≈ ([0-9.]+)/);
-    return match ? parseFloat(match[1]) : null;
+  static segmentArea(radius, height, trig) {
+    const baseY = radius - height;
+
+    const acosExpr = `acos(${baseY} / ${radius})`;
+    const acosResult = queryAcos(acosExpr, trig);
+    const theta = parseFloat(acosResult.match(/rad\(([^)]+)\)/)?.[1]);
+
+    const sinExpr = `sin(${theta})`;
+    const sinResult = querySin(sinExpr, trig);
+    const sine = parseFloat(sinResult.match(/≈ ([0-9.]+)/)?.[1]);
+
+    return theta * radius ** 2 - sine * baseY * radius;
+  }
+
+  get circumference() {
+    return CgsCircle.circumference(this.radius);
   }
 
   get area() {
-    if (this.angle === null || this.sine === null) return null;
-    // A = acos(ratio) * r² - sin(acos(ratio)) * (r - n) * r
-    return CgsCircleSegment.area(this.angle * this.r ** 2 - this.sine * (this.r - this.n) * this.r);
+    return CgsCircle.area(this.radius);
   }
 
   toString() {
-    return `Area(r=${this.r}, n=${this.n}) ≈ Area: ${this.area?.toFixed(5)}`;
+    return `Circle(r=${this.radius}) ≈ Area: ${this.area.toFixed(5)}, Circumference: ${this.circumference.toFixed(5)}`;
   }
-}
 
     
 // ---- Volume of a cylinder ----
