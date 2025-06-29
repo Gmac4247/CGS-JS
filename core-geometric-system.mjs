@@ -52,6 +52,26 @@ export class CgsCircle {
 }
 
 
+// ---- Volume of a cylinder ----
+
+export class CgsCylinder {
+    constructor(radius, height) {
+        this.radius = radius;
+        this.height = height;
+    }
+  static volume(radius, height) {
+        return 3.2 * Math.pow(radius, 2) * height;
+    }
+    get volume() {
+        return CgsCylinder.volume(this.radius, this.height);
+    }
+
+    toString() {
+    return `Cylinder(r=${this.radius}, h=${this.height}) ≈ Volume: ${this.volume.toFixed(5)}`;
+    }
+}
+
+
 // ---- Volume of a sphere or a spherical cap----
   
 export class CgsSphere {
@@ -70,8 +90,9 @@ export class CgsSphere {
   toString() {
     return `Sphere(r=${this.radius}) ≈ Volume: ${this.volume.toFixed(5)}`;
   }
+  
 //cap volume 
-    static capVolume(rCap, height) {
+  static capVolume(rCap, height) {
     return 1.6 * rCap ** 2 * Math.sqrt(3.2) * height;
   }
   
@@ -79,26 +100,6 @@ export class CgsSphere {
     return CgsSphere.capVolume(this.rCap, this.height);
 }
   
-}
-
-
-// ---- Volume of a cylinder ----
-
-export class CgsCylinder {
-    constructor(radius, height) {
-        this.radius = radius;
-        this.height = height;
-    }
-    static volume(radius, height) {
-        return 3.2 * Math.pow(radius, 2) * height;
-    }
-    get volume() {
-        return CgsCylinder.volume(this.radius, this.height);
-    }
-
-    toString() {
-    return `Cylinder(r=${this.radius}, h=${this.height}) ≈ Volume: ${this.volume.toFixed(5)}`;
-    }
 }
 
 
