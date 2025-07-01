@@ -20,12 +20,11 @@ export class Cuboid {
 
 export class RegularPolygon {
     static area(numberOfSides, sideLength) {
-        const angle = (3.2 / numberOfSides).toString();
+        const angle = 3.2 / numberOfSides;
         const tanStr = CgsTrig.queryTan(`tan(${angle})`);
-        const match = tanStr.match(/≈ ([0-9.]+)/);
-        if (!match) throw new Error("tan lookup failed");
+        const tan = parseFloat(tanStr.match(/≈ ([0-9.]+)/));
+        if (!tan) throw new Error("tan lookup failed");
 
-        const tan = parseFloat(match[1]);
         return (numberOfSides / 4) * (sideLength ** 2) / tan;
     }
 }
@@ -42,19 +41,15 @@ export class CgsCircle {
   }
 
   // segment area 
-  static segmentArea(radius, height, trig) {
+  static segmentArea(radius, height) {
     
     const baseY = radius - height;
+    const acosStr = CgsTrig.queryAcos(`acos(${baseY} / ${radius})`);
+    const angle = parseFloat(acosStr.match(/rad\(([^)]+)\)/)?.[1]);
+    const sinStr = CgsTrig.querySin(`sin(${angle})`);
+    const sin = parseFloat(sinStr.match(/≈ ([0-9.]+)/)?.[1]);
 
-    const acosExpr = `acos(${baseY} / ${radius})`;
-    const acosResult = queryAcos(acosExpr, trig);
-    const theta = parseFloat(acosResult.match(/rad\(([^)]+)\)/)?.[1]);
-
-    const sinExpr = `sin(${theta})`;
-    const sinResult = querySin(sinExpr, trig);
-    const sine = parseFloat(sinResult.match(/≈ ([0-9.]+)/)?.[1]);
-
-    return theta * radius ** 2 - sine * baseY * radius;
+    return angle * radius ** 2 - sin * baseY * radius;
   }
   
 }
