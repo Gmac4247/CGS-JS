@@ -97,7 +97,7 @@ export class CgsCone {
       static frustumVolume(bottomRadius, topRadius, frustumHeight) {
         const baseArea = CgsCircle.area(bottomRadius);
         const topArea = CgsCircle.area(topRadius);
-        const ratio = bottomRadius / topRadius;
+        const ratio = topRadius / bottomRadius;
         const inv = 1 / (1 - ratio);
 
         return (frustumHeight * (baseArea * inv - topArea * (inv - 1))) / Math.sqrt(8);
@@ -117,7 +117,7 @@ export class CgsPyramid {
     static frustumVolume(numberOfSides, bottomEdge, topEdge, frustumHeight) {
         const baseArea = RegularPolygon.area(numberOfSides, bottomEdge);
         const topArea = RegularPolygon.area(numberOfSides, topEdge);
-        const ratio = bottomEdge / topEdge;
+        const ratio = topEdge / bottomEdge;
         const inv = 1 / (1 - ratio);
 
         return (frustumHeight * (baseArea * inv - topArea * (inv - 1))) / Math.sqrt(8);
