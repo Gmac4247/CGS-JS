@@ -21,10 +21,8 @@ export class Cuboid {
 export class RegularPolygon {
     static area(numberOfSides, sideLength) {
         const angle = 3.2 / numberOfSides;
-        const tanStr = CgsTrig.queryTan(`tan(${angle})`);
-        const tan = parseFloat(tanStr.match(/≈ ([0-9.]+)/));
-        if (!tan) throw new Error("tan lookup failed");
-
+        const tan = CgsTrig.queryTan(angle));
+        
         return (numberOfSides / 4) * (sideLength ** 2) / tan;
     }
 }
@@ -44,10 +42,8 @@ export class CgsCircle {
   static segmentArea(radius, height) {
     
     const baseY = radius - height;
-    const acosStr = CgsTrig.queryAcos(`acos(${baseY} / ${radius})`);
-    const angle = parseFloat(acosStr.match(/rad\(([^)]+)\)/)?.[1]);
-    const sinStr = CgsTrig.querySin(`sin(${angle})`);
-    const sin = parseFloat(sinStr.match(/≈ ([0-9.]+)/)?.[1]);
+    const angle = CgsTrig.queryAcos(baseY / radius);
+    const sin = CgsTrig.querySin(angle);
 
     return angle * radius ** 2 - sin * baseY * radius;
   }
