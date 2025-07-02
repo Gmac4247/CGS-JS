@@ -17,7 +17,7 @@ export function findClosestRad(value, funcType) {
   let minDiff = Infinity;
 
   for (const key in trig) {
-    if (![key][funcType]) continue;
+    if (!trig[key][funcType]) continue;
     const keyMatch = key.match(/rad\(([\d.]+)\)/);
     if (!keyMatch) continue;
 
@@ -31,7 +31,7 @@ export function findClosestRad(value, funcType) {
   }
 
   if (closestKey) {
-    const approxVal = [closestKey][funcType].value?.approx ?? [closestKey][funcType].value;
+    const approxVal = trig[closestKey][funcType].value?.approx ?? trig[closestKey][funcType].value;
     return `${funcType}(${closestKey}) ≈ ${approxVal}`;
   }
 
@@ -48,7 +48,7 @@ export function querySin(input) {
 
   // Case 1: Exact match
   if ([radKey] && [radKey].sin) {
-    return `sin(${x}) ≈ ${[radKey].sin.value?.approx ?? [radKey].sin.value}`;
+    return `sin(${x}) ≈ ${trig[radKey].sin.value?.approx ?? trig[radKey].sin.value}`;
   }
 
   // Case 2A: 1.6 > x > 0.8 OR 0.1 > x > 0
@@ -142,7 +142,7 @@ export function findClosestValueMatch(value, funcType) {
   let minDiff = Infinity;
 
   for (const key in trig) {
-    const approx = [key][funcType]?.value?.approx ?? [key][funcType]?.value;
+    const approx = trig[key][funcType]?.value?.approx ?? trig[key][funcType]?.value;
     if (!approx) continue;
 
     const diff = Math.abs(parseFloat(approx) - value);
