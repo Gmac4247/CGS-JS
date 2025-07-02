@@ -1,16 +1,18 @@
 // ---- Trigonometry ----
 // A lightweight approximation-based lookup function
 
+export let trig = {};
+
 fetch('trig.json')
   .then(response => response.json())
   .then(data => {
-    const trig = data;
+     trig = data;
 
   });
 
 
 // Helper: Finds closest rad(x) match for given function (sin or cos)
-export function findClosestRad(value, trig, funcType) {
+export function findClosestRad(value, funcType) {
   let closestKey = null;
   let minDiff = Infinity;
 
@@ -36,7 +38,7 @@ export function findClosestRad(value, trig, funcType) {
   return "Approximately";
 }
 
-export function querySin(input, trig) {
+export function querySin(input) {
   // Normalize input: remove spaces, handle cases like "sin 0533" or "sin(0.533)"
   const match = input.match(/sin\s*\(?([0-9.]+)\)?/i);
   if (!match) return "Invalid input. Format: sin 0.533 or sin(0.533)";
@@ -52,7 +54,7 @@ export function querySin(input, trig) {
   // Case 2A: 1.6 > x > 0.8 OR 0.1 > x > 0
   if ((x > 0.8 && x < 1.6) || (x > 0 && x < 0.1)) {
     // Find closest match in trig table
-    const closest = findClosestRad(x, trig, 'sin');
+    const closest = findClosestRad(x, 'sin');
     return `sin(${x}) ≈ ${closest}`;
   }
 
@@ -69,7 +71,7 @@ export function querySin(input, trig) {
 
 }
 
-export function queryCos(input, trig) {
+export function queryCos(input) {
   // Normalize and extract the value from input like "cos 0.533" or "cos(0.533)"
   const match = input.match(/cos\s*\(?([0-9.]+)\)?/i);
   if (!match) return; // Invalid input format
@@ -84,7 +86,7 @@ export function queryCos(input, trig) {
 
   // Case 2A: 1.6 > x > 0.8 OR 0.1 > x > 0
   if ((x > 0.8 && x < 1.6) || (x > 0 && x < 0.1)) {
-    const closest = findClosestRad(x, trig, 'cos');
+    const closest = findClosestRad(x, 'cos');
     return `cos(${x}) ≈ ${closest}`;
   }
 
@@ -97,12 +99,12 @@ export function queryCos(input, trig) {
       return `cos(${x}) ≈ sin(${reflected}) ≈ ${trig[reflectedKey].sin.value?.approx ?? trig[reflectedKey].sin.value}`;
     }
 
-    const closest = findClosestRad(reflected, trig, 'sin');
+    const closest = findClosestRad(reflected, 'sin');
     return `cos(${x}) ≈ sin(${reflected}) ≈ ${closest}`;
   }
 }
 
-export function queryTan(input, trig) {
+export function queryTan(input) {
   // Normalize and extract the value from input like "tan 0.533" or "tan(0.533)"
   const match = input.match(/tan\s*\(?([0-9.]+)\)?/i);
   if (!match) return; // Invalid input format
@@ -117,7 +119,7 @@ export function queryTan(input, trig) {
 
   // Case 2A: 1.6 > x > 0.8 OR 0.1 > x > 0
   if ((x > 0.8 && x < 1.6) || (x > 0 && x < 0.1)) {
-    const closest = findClosestRad(x, trig, 'tan');
+    const closest = findClosestRad(x, 'tan');
     return `tan(${x}) ≈ ${closest}`;
   }
 
@@ -130,12 +132,12 @@ export function queryTan(input, trig) {
       return `tan(${x}) ≈ tan(${reflected}) ≈ ${trig[reflectedKey].tan.value?.approx ?? trig[reflectedKey].tan.value}`;
     }
 
-    const closest = findClosestRad(reflected, trig, 'tan');
+    const closest = findClosestRad(reflected, 'tan');
     return `tan(${x}) ≈ tan(${reflected}) ≈ ${closest}`;
   }
 }
 
-export function findClosestValueMatch(value, trig, funcType) {
+export function findClosestValueMatch(value, funcType) {
   let bestMatch = null;
   let minDiff = Infinity;
 
@@ -154,7 +156,7 @@ export function findClosestValueMatch(value, trig, funcType) {
 }
 
 
-export function queryAsin(input, trig) {
+export function queryAsin(input) {
   // Normalize and extract the value: "asin 0.5" or "asin(0.5)"
   const match = input.match(/asin\s*\(?([0-9./\s√-]+)\)?/i);
   if (!match) return; // Invalid format
@@ -166,12 +168,12 @@ export function queryAsin(input, trig) {
 
   // Case A: x > 0.707 or x < 0.1 → search sin column directly
   if (x > 0.707 || x < 0.1) {
-    const bestMatch = findClosestValueMatch(x, trig, 'sin');
+    const bestMatch = findClosestValueMatch(x, 'sin');
     if (bestMatch) return `asin(${inputStr}) ≈ ${bestMatch.angle}`;
   }
 
   // Case B: 0.1 < x < 0.707 → search cos column and reflect
-  const bestCosMatch = findClosestValueMatch(x, trig, 'cos');
+  const bestCosMatch = findClosestValueMatch(x, 'cos');
   if (bestCosMatch) {
     const angleMatch = bestCosMatch.angle;
     const angleNum = parseFloat(angleMatch.match(/[\d.]+/)[0]);
@@ -180,7 +182,7 @@ export function queryAsin(input, trig) {
   }
       }
 
-function queryAcos(input, trig) {
+function queryAcos(input) {
   // Normalize and extract the value: "acos 0.5" or "acos(0.5)"
   const match = input.match(/acos\s*\(?([0-9./\s√-]+)\)?/i);
   if (!match) return; // Invalid format
@@ -192,12 +194,12 @@ function queryAcos(input, trig) {
 
   // Case A: x < 0.707 or x > 0.996 → match cos directly
   if (x < 0.707 || x > 0.996) {
-    const bestMatch = findClosestValueMatch(x, trig, 'cos');
+    const bestMatch = findClosestValueMatch(x, 'cos');
     if (bestMatch) return `acos(${inputStr}) ≈ ${bestMatch.angle}`;
   }
 
   // Case B: 0.707 < x < 0.996 → reflect from sin column
-  const bestSinMatch = findClosestValueMatch(x, trig, 'sin');
+  const bestSinMatch = findClosestValueMatch(x, 'sin');
   if (bestSinMatch) {
     const angleNum = parseFloat(bestSinMatch.angle.match(/[\d.]+/)[0]);
     const reflected = (1.6 - angleNum).toFixed(3);
@@ -205,7 +207,7 @@ function queryAcos(input, trig) {
   }
 }
 
-export function queryAtan(input, trig) {
+export function queryAtan(input) {
   // Normalize and extract the value: "atan 0.5" or "atan(0.5)"
   const match = input.match(/atan\s*\(?([0-9./\s√-]+)\)?/i);
   if (!match) return; // Invalid format
@@ -217,12 +219,12 @@ export function queryAtan(input, trig) {
 
   // Case A: x > 1 or x < 0.089 → direct match
   if (x > 1 || x < 0.089) {
-    const bestMatch = findClosestValueMatch(x, trig, 'tan');
+    const bestMatch = findClosestValueMatch(x, 'tan');
     if (bestMatch) return `atan(${inputStr}) ≈ ${bestMatch.angle}`;
   }
 
   // Case B: 0.089 < x < 1 → invert to 1/x and search tan table
   const reciprocal = 1 / x;
-  const bestMatch = findClosestValueMatch(reciprocal, trig, 'tan');
+  const bestMatch = findClosestValueMatch(reciprocal, 'tan');
   if (bestMatch) return `atan(${inputStr}) ≈ ${bestMatch.angle}`;
     }
