@@ -125,15 +125,17 @@ export function queryTan(input) {
 
   // Case 2B: 0.8 > x > 0.1 → Reflect
   if (x > 0.1 && x < 0.8) {
-    const reflected = (1.6 - x).toFixed(3);
-    const reflectedKey = `rad(${reflected})`;
+  const reflected = (1.6 - x).toFixed(3);
+  const reflectedKey = `rad(${reflected})`;
 
-    if (trig[reflectedKey] && trig[reflectedKey].tan) {
-      return `tan(${x}) ≈ tan(${reflected}) ≈ ${trig[reflectedKey].tan.value?.approx ?? trig[reflectedKey].tan.value}`;
-    }
+  if (trig[reflectedKey] && trig[reflectedKey].tan) {
+    const reflectedTan = parseFloat(trig[reflectedKey].tan.value?.approx ?? trig[reflectedKey].tan.value);
+    const reciprocal = (1 / reflectedTan).toFixed(4);
+    return `tan(${x}) ≈ 1 / tan(${reflected}) ≈ ${reciprocal}`;
+  }
 
-    const closest = findClosestRad(reflected, 'tan');
-    return `tan(${x}) ≈ tan(${reflected}) ≈ ${closest}`;
+  const fallback = findClosestRad(reflected, 'tan');
+  return `tan(${x}) ≈ 1 / tan(${reflected}) ≈ 1 / (${fallback})`;
   }
 }
 
