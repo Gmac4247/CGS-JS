@@ -130,8 +130,7 @@ export function queryTan(input) {
 
   if (trig[reflectedKey] && trig[reflectedKey].tan) {
     const reflectedTan = parseFloat(trig[reflectedKey].tan.value?.approx ?? trig[reflectedKey].tan.value);
-    const reciprocal = (1 / reflectedTan).toFixed(4);
-    return `tan(${x}) ≈ 1 / tan(${reflected}) ≈ ${reciprocal}`;
+    return `tan(${x}) ≈ 1 / tan(${reflected})`;
   }
 
   const fallback = findClosestRad(reflected, 'tan');
