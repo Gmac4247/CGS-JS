@@ -310,7 +310,7 @@
     "expression": [
       "sin/cos",
       "sqrt(3)"
-      ]
+      ],
     "value": {
     "approx": "1.732"
     }
@@ -345,7 +345,7 @@
     "value": {
       "approx": "1.566"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "57.4"
@@ -376,7 +376,7 @@
     "value": {
       "approx": "1.447"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "55.4"
@@ -407,7 +407,7 @@
     "value": {
       "approx": "1.359"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "53.7"
@@ -438,7 +438,7 @@
     "value": {
       "approx": "1.291"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "52.2"
@@ -469,7 +469,7 @@
     "value": {
       "approx": "1.238"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "51"
@@ -500,7 +500,7 @@
     "value": {
       "approx": "1.196"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "50"
@@ -531,7 +531,7 @@
     "value": {
       "approx": "1.162"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "49.3"
@@ -562,7 +562,7 @@
     "value": {
       "approx": "1.134"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "48.6"
@@ -593,7 +593,7 @@
     "value": {
       "approx": "1.111"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "48"
@@ -624,7 +624,7 @@
     "value": {
       "approx": "1.093"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "47.5"
@@ -655,7 +655,7 @@
     "value": {
       "approx": "1.065"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "46.8"
@@ -686,7 +686,7 @@
     "value": {
       "approx": "1.032"
     }
-  }
+  },
   "deg": {
     "value": {
     "approx": "45.9"
