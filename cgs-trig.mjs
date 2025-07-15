@@ -35,7 +35,6 @@ export function findClosestRad(value, funcType) {
     return `${funcType}(${closestKey}) ≈ ${approxVal}`;
   }
 
-  return "Approximately";
 }
 
 export function querySin(input) {
