@@ -31,7 +31,7 @@ export function findClosestRad(value, funcType) {
   }
 
   if (closestKey) {
-    const approxVal = trig[closestKey][funcType].value?.approx ?? trig[closestKey][funcType].value;
+    const approxVal = trig[closestKey][funcType].value;
     return `${funcType}(${closestKey}) ≈ ${approxVal}`;
   }
 
@@ -47,7 +47,7 @@ export function querySin(input) {
 
   // Case 1: Exact match
   if ([radKey] && [radKey].sin) {
-    return `sin(${x}) ≈ ${trig[radKey].sin.value?.approx ?? trig[radKey].sin.value}`;
+    return `sin(${x}) ≈ ${trig[radKey].sin}`;
   }
 
   // Case 2A: 1.6 > x > 0.8 OR 0.1 > x > 0
@@ -62,7 +62,7 @@ export function querySin(input) {
     const reflected = (1.6 - x).toFixed(3);
     const reflectedKey = `rad(${reflected})`;
     if (trig[reflectedKey] && trig[reflectedKey].cos) {
-      return `sin(${x}) ≈ cos(${reflected}) ≈ ${trig[reflectedKey].cos.value?.approx ?? trig[reflectedKey].cos.value}`;
+      return `sin(${x}) ≈ cos(${reflected}) ≈ ${trig[reflectedKey].cos}`;
     }
     const closest = findClosestRad(reflected, 'cos');
     return `sin(${x}) ≈ cos(${reflected}) ≈ ${closest}`;
@@ -80,7 +80,7 @@ export function queryCos(input) {
 
   // Case 1: Exact match
   if (trig[radKey] && trig[radKey].cos) {
-    return `cos(${x}) ≈ ${trig[radKey].cos.value?.approx ?? trig[radKey].cos.value}`;
+    return `cos(${x}) ≈ ${trig[radKey].cos}`;
   }
 
   // Case 2A: 1.6 > x > 0.8 OR 0.1 > x > 0
@@ -95,7 +95,7 @@ export function queryCos(input) {
     const reflectedKey = `rad(${reflected})`;
 
     if (trig[reflectedKey] && trig[reflectedKey].sin) {
-      return `cos(${x}) ≈ sin(${reflected}) ≈ ${trig[reflectedKey].sin.value?.approx ?? trig[reflectedKey].sin.value}`;
+      return `cos(${x}) ≈ sin(${reflected}) ≈ ${trig[reflectedKey].sin}`;
     }
 
     const closest = findClosestRad(reflected, 'sin');
@@ -113,7 +113,7 @@ export function queryTan(input) {
 
   // Case 1: Exact match
   if (trig[radKey] && trig[radKey].tan) {
-    return `tan(${x}) ≈ ${trig[radKey].tan.value?.approx ?? trig[radKey].tan.value}`;
+    return `tan(${x}) ≈ ${trig[radKey].tan}`;
   }
 
   // Case 2A: 1.6 > x > 0.8 OR 0.1 > x > 0
@@ -128,7 +128,7 @@ export function queryTan(input) {
   const reflectedKey = `rad(${reflected})`;
 
   if (trig[reflectedKey] && trig[reflectedKey].tan) {
-    const reflectedTan = parseFloat(trig[reflectedKey].tan.value?.approx ?? trig[reflectedKey].tan.value);
+    const reflectedTan = parseFloat(trig[reflectedKey].tan);
     return `tan(${x}) ≈ 1 / tan(${reflected})`;
   }
 
