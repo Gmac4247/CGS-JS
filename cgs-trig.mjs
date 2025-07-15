@@ -142,19 +142,21 @@ export function findClosestValueMatch(value, funcType) {
   let minDiff = Infinity;
 
   for (const key in trig) {
-    const approx = trig[key][funcType]?.value?.approx ?? trig[key][funcType]?.value;
-    if (!approx) continue;
+    const raw = trig[key][funcType];
+    if (typeof raw !== 'number') continue;
 
-    const diff = Math.abs(parseFloat(approx) - value);
+    const diff = Math.abs(raw - value);
     if (diff < minDiff) {
       minDiff = diff;
-      bestMatch = { angle: key, approx };
+      bestMatch = {
+        angle: key,
+        approx: raw
+      };
     }
   }
 
   return bestMatch;
 }
-
 
 export function queryAsin(input) {
   // Normalize and extract the value: "asin 0.5" or "asin(0.5)"
