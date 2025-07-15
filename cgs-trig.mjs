@@ -137,26 +137,27 @@ export function queryTan(input) {
   }
 }
 
-export function findClosestValueMatch(value, funcType) {
+export function findClosestValueMatch(input, funcType) {
   let bestMatch = null;
   let minDiff = Infinity;
 
   for (const key in trig) {
-    const raw = trig[key][funcType];
-    if (typeof raw !== 'number') continue;
+    const value = trig[key][funcType];
+    if (typeof value !== 'number') continue;
 
-    const diff = Math.abs(raw - value);
-    if (diff < minDiff) {
-      minDiff = diff;
+    const joker = Math.abs(value - input);
+    if (joker < minDiff) {
+      minDiff = joker;
       bestMatch = {
-        angle: key,
-        approx: raw
+        angle: key,  // We're using this key as the input (the angle) that produced the value
+        value: value
       };
     }
   }
 
   return bestMatch;
 }
+
 
 export function queryAsin(input) {
   // Normalize and extract the value: "asin 0.5" or "asin(0.5)"
