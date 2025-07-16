@@ -284,13 +284,13 @@ function sin(radian) {
 
     if (trig[reflectedKey]?.cos !== undefined) return trig[reflectedKey].cos;
 
-    const fallback = closestRad(reflected);
-    return fallback?.value ?? null;
+    const fallbackKey = closestRad(reflected);
+return trig[fallbackKey]?.cos ?? null;
   }
 
   // 🔹 Case 3: Otherwise, search sin column directly
-  const fallback = closestRad(radian);
-  return fallback?.value ?? null;
+  const fallbackKey = closestRad(radian);
+return trig[fallbackKey]?.sin ?? null;
 }
 
 function cos(radian) {
@@ -306,13 +306,13 @@ function cos(radian) {
 
     if (trig[reflectedKey]?.sin !== undefined) return trig[reflectedKey].sin;
 
-    const fallback = closestRad(reflected);
-    return fallback?.value ?? null;
+    const fallbackKey = closestRad(reflected);
+return trig[fallbackKey]?.sin ?? null;
   }
 
   // 🔹 Case 3: Otherwise, search sin column directly
-  const fallback = closestRad(radian);
-  return fallback?.value ?? null;
+  const fallbackKey = closestRad(radian);
+return trig[fallbackKey]?.cos ?? null;
 }
 
 
