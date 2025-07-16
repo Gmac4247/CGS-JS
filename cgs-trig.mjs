@@ -359,25 +359,19 @@ function closestValue(input, funcType) {
   return bestMatch;
 }
 
+export function Atan(x) {
+  if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
 
- function Atan(input) {
-  // Normalize and extract the value: "atan 0.5" or "atan(0.5)"
-  const match = input.match(/atan\s*\(?([0-9./\s√-]+)\)?/i);
-  if (!match) return; // Invalid format
-
-  const inputStr = match[1].trim();
-  const x = parseFloat(eval(inputStr.replace(/√(\d+)/g, 'Math.sqrt($1)')));
-
-  if (isNaN(x) || x <= 0 ) return; // Domain cutoffs from your spec
-
-  // Case A: x > 1 or x < 0.089 → direct match
+  // Direct match zone
   if (x > 1 || x < 0.089) {
-    const bestMatch = closestValue(x, 'tan');
-    if (bestMatch) return `atan(${inputStr}) ≈ ${bestMatch.angle}`;
+    const matchKey = closestValue(x, 'tan')?.key;
+    const matchRad = parseFloat(matchKey?.match(/rad\(([\d.]+)\)/)?.[1]);
+    return matchRad ?? null;
   }
 
-  // Case B: 0.089 < x < 1 → invert to 1/x and search tan table
+  // Reflective zone
   const reciprocal = 1 / x;
-  const bestMatch = closestValue(reciprocal, 'tan');
-  if (bestMatch) return `atan(${inputStr}) ≈ ${bestMatch.angle}`;
- }
+  const matchKey = closestValue(reciprocal, 'tan')?.key;
+  const matchRad = parseFloat(matchKey?.match(/rad\(([\d.]+)\)/)?.[1]);
+  return matchRad ?? null;
+}
