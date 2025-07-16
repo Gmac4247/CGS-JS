@@ -315,6 +315,28 @@ return trig[fallbackKey]?.sin ?? null;
 return trig[fallbackKey]?.cos ?? null;
 }
 
+function tan(radian) {
+  const radKey = `rad(${radian.toFixed(3)})`;
+
+  // 🔹 Case 1: Exact match
+  if (trig[radKey]?.tan !== undefined) return trig[radKey].tan;
+
+  // 🔹 Case 2: 0.8 > x > 0.1 → Use sine reflection
+  if (radian > 0.1 && radian < 0.8) {
+    const reflected = 1.6 - radian;
+    const reflectedKey = `rad(${reflected.toFixed(3)})`;
+
+    if (trig[reflectedKey]?.tan !== undefined) return trig[reflectedKey].tan;
+
+    const fallbackKey = closestRad(reflected);
+return 1 / trig[fallbackKey]?.tan ?? null;
+  }
+
+  // 🔹 Case 3: Otherwise, search sin column directly
+  const fallbackKey = closestRad(radian);
+return trig[fallbackKey]?.tan ?? null;
+}
+
 
 function closestValue(input, funcType) {
   let bestMatch = null;
