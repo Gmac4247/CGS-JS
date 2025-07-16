@@ -392,12 +392,12 @@ function Asin(x) {
   return radian;
 }
 
-function Asin(x) {
+function Acos(x) {
   if (typeof x !== 'number' || isNaN(x) || x <= 0 || x > 1) return null;
 
   let radian = null;
 
-  if (0.995 < x < 0.707) {
+  if (x > 0.707 && x < 0.995) {
     // Direct match
     const match = closestValue(x, 'cos');
     if (!match?.angle) return null;
