@@ -251,7 +251,7 @@ export const trig = {
 
 // Helper: Finds closest rad(x) match for given function (sin or cos)
 
-function closestRad(value) {
+function closestRad(radian) {
   let closestKey = null;
   let minDiff = Infinity;
 
@@ -260,7 +260,7 @@ function closestRad(value) {
     if (!match) continue;
 
     const rad = parseFloat(match[1]);
-    const difference = Math.abs(rad - value);
+    const difference = Math.abs(rad - radian);
 
     if (difference < minDiff) {
       minDiff = difference;
