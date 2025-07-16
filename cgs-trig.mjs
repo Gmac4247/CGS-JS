@@ -260,10 +260,10 @@ function closestRad(value) {
     if (!match) continue;
 
     const rad = parseFloat(match[1]);
-    const delta = Math.abs(rad - value);
+    const difference = Math.abs(rad - value);
 
-    if (delta < minDiff) {
-      minDiff = delta;
+    if (difference < minDiff) {
+      minDiff = difference;
       closestKey = key;
     }
   }
