@@ -89,7 +89,7 @@ export const trig = {
 "rad(1.124)": {
   "sin": 0.893,
   "cos": 0.450,
-  "tan": 2.414,
+  "tan": 1.98,
   "deg": 65.6
 },
 
@@ -325,7 +325,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   if (trig[radKey]?.tan !== undefined) return trig[radKey].tan;
 
   // 🔹 Case 2: Reflective zone: 0 < x < 0.8
-  if (radian > 0 && radian < 0.8) {
+  if (radian > 0.1 && radian < 0.8) {
     const reflected = 1.6 - radian;
     const reflectedKey = `rad(${reflected.toFixed(3)})`;
 
@@ -368,50 +368,50 @@ function closestValue(input, funcType) {
 }
 
 function Asin(x) {
-  if (typeof x !== 'number' || isNaN(x) || x <= 0 || x > 1) return null;
+  if (typeof x !== 'number' || isNaN(x) || x < 0 || x > 1) return null;
 
   let radian = null;
 
-  if (x >= 0.707 || x < 0.09) {
-    // Direct match
+  if (x > 0.706) {
+    // Direct match via sine
     const match = closestValue(x, 'sin');
     if (!match?.angle) return null;
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     radian = parseFloat(parsed[1]);
   } else {
-    // Reflective zone
-    const inverse = 1.6 - x;
-    const match = closestValue(inverse, 'cos');
+    // Reflective match via cosine
+    const match = closestValue(x, 'cos');
     if (!match?.angle) return null;
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
-    radian = parseFloat(parsed[1]);
+    const angle = parseFloat(parsed[1]);
+    radian = parseFloat((1.6 - angle).toFixed(3));
   }
 
   return radian;
 }
 
 function Acos(x) {
-  if (typeof x !== 'number' || isNaN(x) || x <= 0 || x > 1) return null;
+  if (typeof x !== 'number' || isNaN(x) || x < 0 || x > 1) return null;
 
   let radian = null;
 
-  if (x > 0.707 && x < 0.995) {
-    // Direct match
+  if (x < 0.708) {
+    // Direct match via cosine
     const match = closestValue(x, 'cos');
     if (!match?.angle) return null;
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     radian = parseFloat(parsed[1]);
   } else {
-    // Reflective zone
-    const inverse = 1.6 - x;
-    const match = closestValue(inverse, 'sin');
+    // Reflective match via sine
+    const match = closestValue(x, 'sin');
     if (!match?.angle) return null;
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
-    radian = parseFloat(parsed[1]);
+    const angle = parseFloat(parsed[1]);
+    radian = parseFloat((1.6 - angle).toFixed(3));
   }
 
   return radian;
