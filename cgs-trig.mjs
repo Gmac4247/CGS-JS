@@ -272,6 +272,7 @@ function closestRad(radian) {
 }
 
 function sin(radian) {
+if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
   const radKey = `rad(${radian.toFixed(3)})`;
 
   // 🔹 Case 1: Exact match
@@ -294,7 +295,8 @@ return trig[fallbackKey]?.sin ?? null;
 }
 
 function cos(radian) {
-  const radKey = `rad(${radian.toFixed(3)})`;
+  if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
+ const radKey = `rad(${radian.toFixed(3)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.cos !== undefined) return trig[radKey].cos;
@@ -316,28 +318,34 @@ return trig[fallbackKey]?.cos ?? null;
 }
 
 function tan(radian) {
+if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
   const radKey = `rad(${radian.toFixed(3)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.tan !== undefined) return trig[radKey].tan;
 
-  // 🔹 Case 2: 0.8 > x > 0.1 → Use sine reflection
-  if (radian > 0.1 && radian < 0.8) {
+  // 🔹 Case 2: Reflective zone: 0 < x < 0.8
+  if (radian > 0 && radian < 0.8) {
     const reflected = 1.6 - radian;
     const reflectedKey = `rad(${reflected.toFixed(3)})`;
 
-    if (trig[reflectedKey]?.tan !== undefined) return trig[reflectedKey].tan;
+    let reflectedTan = trig[reflectedKey]?.tan;
 
-    const fallbackKey = closestRad(reflected);
-return 1 / trig[fallbackKey]?.tan ?? null;
+    if (reflectedTan === undefined) {
+      const fallbackKey = closestRad(reflected);
+      reflectedTan = trig[fallbackKey]?.tan ?? null;
+    }
+
+    if (typeof reflectedTan !== 'number' || reflectedTan === 0) return null;
+
+    return parseFloat((1 / reflectedTan).toFixed(3));
   }
 
-  // 🔹 Case 3: Otherwise, search sin column directly
+  // 🔹 Case 3: Fallback
   const fallbackKey = closestRad(radian);
-return trig[fallbackKey]?.tan ?? null;
+  return trig[fallbackKey]?.tan ?? null;
 }
-
-
+	
 function closestValue(input, funcType) {
   let bestMatch = null;
   let minDiff = Infinity;
@@ -359,12 +367,62 @@ function closestValue(input, funcType) {
   return bestMatch;
 }
 
+function Asin(x) {
+  if (typeof x !== 'number' || isNaN(x) || x <= 0 || x > 1) return null;
+
+  let radian = null;
+
+  if (x >= 0.707 || x < 0.09) {
+    // Direct match
+    const match = closestValue(x, 'sin');
+    if (!match?.angle) return null;
+    const parsed = match.angle.match(/rad\(([\d.]+)\)/);
+    if (!parsed) return null;
+    radian = parseFloat(parsed[1]);
+  } else {
+    // Reflective zone
+    const inverse = 1.6 - x;
+    const match = closestValue(inverse, 'cos');
+    if (!match?.angle) return null;
+    const parsed = match.angle.match(/rad\(([\d.]+)\)/);
+    if (!parsed) return null;
+    radian = parseFloat(parsed[1]);
+  }
+
+  return radian;
+}
+
+function Asin(x) {
+  if (typeof x !== 'number' || isNaN(x) || x <= 0 || x > 1) return null;
+
+  let radian = null;
+
+  if (0.995 < x < 0.707) {
+    // Direct match
+    const match = closestValue(x, 'cos');
+    if (!match?.angle) return null;
+    const parsed = match.angle.match(/rad\(([\d.]+)\)/);
+    if (!parsed) return null;
+    radian = parseFloat(parsed[1]);
+  } else {
+    // Reflective zone
+    const inverse = 1.6 - x;
+    const match = closestValue(inverse, 'sin');
+    if (!match?.angle) return null;
+    const parsed = match.angle.match(/rad\(([\d.]+)\)/);
+    if (!parsed) return null;
+    radian = parseFloat(parsed[1]);
+  }
+
+  return radian;
+}
+
 function Atan(x) {
   if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
 
   let radian = null;
 
-  if (x > 1 || x < 0.089) {
+  if (x > 1 || x < 0.09) {
     // Direct match
     const match = closestValue(x, 'tan');
     if (!match?.angle) return null;
@@ -379,7 +437,7 @@ function Atan(x) {
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     const reflected = parseFloat(parsed[1]);
-    radian = 1.6 - reflected;
+    radian = parseFloat((1.6 - reflected).toFixed(3));
   }
 
   return radian;
