@@ -360,18 +360,16 @@ function closestValue(input, funcType) {
 }
 
 export function Atan(x) {
-  if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
+if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
 
-  // Direct match zone
-  if (x > 1 || x < 0.089) {
-    const matchKey = closestValue(x, 'tan')?.key;
-    const matchRad = parseFloat(matchKey?.match(/rad\(([\d.]+)\)/)?.[1]);
-    return matchRad ?? null;
-  }
+// Direct match zone
+if (x > 1 || x < 0.089) {
+  const match = closestValue(x, 'tan');
+  return match?.angle ?? null;
+}
 
-  // Reflective zone
-  const reciprocal = 1 / x;
-  const matchKey = closestValue(reciprocal, 'tan')?.key;
-  const matchRad = parseFloat(matchKey?.match(/rad\(([\d.]+)\)/)?.[1]);
-  return matchRad ?? null;
+// Reflective zone (0.089 < x < 1)
+const reciprocal = 1 / x;
+const match = closestValue(reciprocal, 'tan');
+return match?.angle ?? null;
 }
