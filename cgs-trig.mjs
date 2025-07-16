@@ -250,12 +250,12 @@ export const trig = {
   }
 
 // Helper: Finds closest rad(x) match for given function (sin or cos)
-export function findClosestRad(value, funcType) {
+export function findClosestRad(value) {
   let closestKey = null;
   let minDiff = Infinity;
 
   for (const key in trig) {
-    if (!trig[key][funcType]) continue;
+    if (!trig[key]) continue;
     const keyMatch = key.match(/rad\(([\d.]+)\)/);
     if (!keyMatch) continue;
 
@@ -269,8 +269,8 @@ export function findClosestRad(value, funcType) {
   }
 
   if (closestKey) {
-    const approxVal = trig[closestKey][funcType].value;
-    return `${funcType}(${closestKey}) ≈ ${approxVal}`;
+    const approxVal = trig[closestKey].value;
+    return `${${closestKey} ≈ ${approxVal}`;
   }
 
 }
