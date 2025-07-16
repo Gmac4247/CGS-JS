@@ -359,24 +359,28 @@ function closestValue(input, funcType) {
   return bestMatch;
 }
 
-export function Atan(x) {
+function Atan(x) {
   if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
 
-  let match = null;
+  let radian = null;
 
-  // Direct match zone
   if (x > 1 || x < 0.089) {
-    match = closestValue(x, 'tan');
+    // Direct match
+    const match = closestValue(x, 'tan');
+    if (!match?.angle) return null;
+    const parsed = match.angle.match(/rad\(([\d.]+)\)/);
+    if (!parsed) return null;
+    radian = parseFloat(parsed[1]);
   } else {
-    // Reflective zone (0.089 < x < 1)
+    // Reflective zone
     const reciprocal = 1 / x;
-    match = closestValue(reciprocal, 'tan');
+    const match = closestValue(reciprocal, 'tan');
+    if (!match?.angle) return null;
+    const parsed = match.angle.match(/rad\(([\d.]+)\)/);
+    if (!parsed) return null;
+    const reflected = parseFloat(parsed[1]);
+    radian = 1.6 - reflected;
   }
 
-  if (!match?.angle) return null;
-
-  const angleMatch = match.angle.match(/rad\(([\d.]+)\)/);
-  if (!angleMatch) return null;
-
-  return parseFloat(angleMatch[1]);
+  return radian;
 }
