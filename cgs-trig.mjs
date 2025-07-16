@@ -255,24 +255,19 @@ export function findClosestRad(value) {
   let minDiff = Infinity;
 
   for (const key in trig) {
-    if (!trig[key]) continue;
-    const keyMatch = key.match(/rad\(([\d.]+)\)/);
-    if (!keyMatch) continue;
+    const match = key.match(/rad\(([\d.]+)\)/);
+    if (!match) continue;
 
-    const radVal = parseFloat(keyMatch[1]);
-    const diff = Math.abs(radVal - value);
+    const rad = parseFloat(match[1]);
+    const delta = Math.abs(rad - value);
 
-    if (diff < minDiff) {
-      minDiff = diff;
+    if (delta < minDiff) {
+      minDiff = delta;
       closestKey = key;
     }
   }
 
-  if (closestKey) {
-    const approxVal = trig[closestKey].value;
-    return `${${closestKey} ≈ ${approxVal}`;
-  }
-
+  return closestKey ?? null;
 }
 
 export function querySin(input) {
