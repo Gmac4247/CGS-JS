@@ -1,7 +1,7 @@
 // ---- Core Geometric System ™ ----
 
 
-// A lightweight approximation-based trigonometry lookup function
+// Lookup-based trigonometry functions
 
 const trig = {
 "rad(1.6)": {
@@ -252,7 +252,7 @@ const trig = {
   }
 
 
-// Helper: Finds closest rad(x) match for given function (sin, cos or tan)
+// Helper to find closest rad(x) match for given function (sin, cos or tan)
 
 function closestRad(radian) {
   let closestKey = null;
@@ -349,7 +349,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   return trig[fallbackKey]?.tan ?? null;
 }
 
-// Helper: Finds closest match for given inverse function (Asin, Acos or Atan)
+// Helper to find closest match for given inverse function (Asin, Acos or Atan)
 	
 function closestValue(input, funcType) {
   let bestMatch = null;
@@ -448,6 +448,8 @@ function Atan(x) {
   return radian;
 }
 
+
+// The properties of shapes 
 
 function triangleArea(product) {
   return Math.sqrt(product);
