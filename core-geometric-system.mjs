@@ -718,8 +718,8 @@ function coneSurface(radius, height) {
   document.getElementById('cone-height-s').addEventListener('input', updateConeSurface);
 
 
-function pyramidVolume(area, height) {
-  return area * height / Math.sqrt(8);
+function pyramidVolume(baseArea, height) {
+  return baseArea * height / Math.sqrt(8);
 }
 
 function updatePyramidVolume() {
@@ -740,8 +740,8 @@ if ( number < 3) {
   const ratio = 3.2 / number;
   const tangent = tan(ratio);
 
-  const area = (number / 4) * (length ** 2) / tangent;
-  const volume = pyramidVolume(area, height);
+  const baseArea = (number / 4) * (length ** 2) / tangent;
+  const volume = pyramidVolume(baseArea, height);
 
   document.getElementById('pyramid-volume').innerText =
     `Volume: ${volume.toFixed(5)} cubic units`;
