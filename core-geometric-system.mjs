@@ -1,5 +1,7 @@
-// ---- Trigonometry ----
-// A lightweight approximation-based lookup function
+// ---- Core Geometric System ™ ----
+
+
+// A lightweight approximation-based trigonometry lookup function
 
 const trig = {
 "rad(1.6)": {
@@ -249,7 +251,8 @@ const trig = {
 	
   }
 
-// Helper: Finds closest rad(x) match for given function (sin or cos)
+
+// Helper: Finds closest rad(x) match for given function (sin, cos or tan)
 
 function closestRad(radian) {
   let closestKey = null;
@@ -345,6 +348,8 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   const fallbackKey = closestRad(radian);
   return trig[fallbackKey]?.tan ?? null;
 }
+
+// Helper: Finds closest match for given inverse function (Asin, Acos or Atan)
 	
 function closestValue(input, funcType) {
   let bestMatch = null;
@@ -472,6 +477,10 @@ function updateTriangleArea() {
     `Area: ${area.toFixed(5)} square units`;
 }
 
+  document.getElementById('side1').addEventListener('input', updateTriangleArea);
+  document.getElementById('side2').addEventListener('input', updateTriangleArea);
+  document.getElementById('side3').addEventListener('input', updateTriangleArea);
+
 
 function polygonArea(length, number, tangent) {
     return number / 4  * length ** 2 / tangent;
@@ -499,6 +508,9 @@ function updatePolygonArea() {
   document.getElementById('polygon-area').innerText =
     `Area: ${area.toFixed(5)} square units`;
 }
+
+  document.getElementById('side-length').addEventListener('input', updatePolygonArea);
+  document.getElementById('side-number').addEventListener('input', updatePolygonArea);
 
 
 function circleArea(radius) {
@@ -553,6 +565,9 @@ function updateSegmentArea() {
   document.getElementById('segment-area').innerText =
     `Area: ${area.toFixed(5)} square units`;
 }
+
+  document.getElementById('segment-length').addEventListener('input', updateSegmentArea);
+  document.getElementById('segment-height').addEventListener('input', updateSegmentArea);
 
 
 function circleCircumference(radius) {
@@ -611,6 +626,9 @@ if ( height > radius) {
       `Volume: ${capVolume(radius, height).toFixed(5)} cubic units`;
   }
 
+  document.getElementById('cap-radius').addEventListener('input', updateCapVolume);
+  document.getElementById('cap-height').addEventListener('input', updateCapVolume);
+
 
 function coneVolume(radius, height) {
     return 3.2 * radius * radius * height / Math.sqrt(8);
@@ -628,6 +646,9 @@ function coneVolume(radius, height) {
     document.getElementById('cone-volume').innerText =
       `Volume: ${coneVolume(radius, height).toFixed(5)} cubic units`;
   }
+
+  document.getElementById('cone-radius-v').addEventListener('input', updateConeVolume);
+  document.getElementById('cone-height-v').addEventListener('input', updateConeVolume);
 
 
 function frustumConeVolume(baseArea, topArea, reciprocal, height) {
@@ -669,6 +690,10 @@ if ( topRadius > baseRadius) {
     `Volume: ${volume.toFixed(5)} cubic units`;
 }
 
+document.getElementById('frustum-cone-base-radius').addEventListener('input', updateFrustumConeVolume);
+document.getElementById('frustum-cone-top-radius').addEventListener('input', updateFrustumConeVolume);
+document.getElementById('frustum-cone-height').addEventListener('input', updateFrustumConeVolume);
+
 
 function coneSurface(radius, height) {
     return 3.2 * radius ** 2 + (radius * Math.sqrt(radius ** 2 + height ** 2));
@@ -686,6 +711,9 @@ function coneSurface(radius, height) {
     document.getElementById('cone-surface').innerText =
       `Area: ${coneSurface(radius, height).toFixed(5)} square units`;
   }
+
+  document.getElementById('cone-radius-s').addEventListener('input', updateConeSurface);
+  document.getElementById('cone-height-s').addEventListener('input', updateConeSurface);
 
 
 function pyramidVolume(area, height) {
@@ -717,7 +745,11 @@ if ( number < 3) {
     `Volume: ${volume.toFixed(5)} cubic units`;
 }
 
+document.getElementById('pyramid-side-number').addEventListener('input', updatePyramidVolume);
+document.getElementById('pyramid-base-edge-length').addEventListener('input', updatePyramidVolume);
+document.getElementById('pyramid-height').addEventListener('input', updatePyramidVolume);
 
+  
 function frustumPyramidVolume(baseArea, topArea, reciprocal, height) {
   return height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
 }
@@ -759,6 +791,11 @@ if ( number < 3) {
   document.getElementById('frustum-pyramid-volume').innerText =
     `Volume: ${volume.toFixed(5)} cubic units`;
 }
+
+document.getElementById('frustum-pyramid-side-number').addEventListener('input', updateFrustumPyramidVolume);
+document.getElementById('frustum-pyramid-base-edge-length').addEventListener('input', updateFrustumPyramidVolume);
+document.getElementById('frustum-pyramid-top-edge-length').addEventListener('input', updateFrustumPyramidVolume);
+document.getElementById('frustum-pyramid-height').addEventListener('input', updateFrustumPyramidVolume);
 
 
 function tetrahedronVolume(edge) {
