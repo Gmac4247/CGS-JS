@@ -696,7 +696,7 @@ document.getElementById('frustum-cone-height').addEventListener('input', updateF
 
 
 function coneSurface(radius, height) {
-    return 3.2 * radius ** 2 + (radius * Math.sqrt(radius ** 2 + height ** 2));
+    return 3.2 * radius * (radius + Math.sqrt(radius ** 2 + height ** 2));
   }
 
   function updateConeSurface() {
