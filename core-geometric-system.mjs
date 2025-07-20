@@ -552,18 +552,23 @@ function updateSegmentArea() {
     document.getElementById('segment-area').innerText = '';
     return;
 	}
-
+	
   if ( ratio > 1) {
     document.getElementById('segment-area').innerText = 'A circle-segment is less than half as high as long.';
     return;
 }
-	
+
   const angle = parseFloat(2 * Atan(ratio));
   const sine = parseFloat(sin(angle));
   const radius = parseFloat((length / 2 / sine).toFixed(5));
-
   const area = segmentArea(length, height, angle, radius);
 
+  if ( ratio === 1) {
+    document.getElementById('segment-area').innerText =
+    `Area of semi-circle: ${area.toFixed(5)} square units`;
+	return;
+  }
+	
   document.getElementById('segment-area').innerText =
     `Area: ${area.toFixed(5)} square units`;
 }
@@ -624,6 +629,12 @@ if ( height > radius) {
     return;
   }
 	  
+if ( height === radius) {
+    document.getElementById('cap-volume').innerText =
+      `Volume of hemisphere: ${capVolume(radius, height).toFixed(5)} cubic units`;
+    return;
+}
+	  
     document.getElementById('cap-volume').innerText =
       `Volume: ${capVolume(radius, height).toFixed(5)} cubic units`;
   }
@@ -669,24 +680,23 @@ if (isNaN(baseRadius) || isNaN(topRadius) || isNaN(height) || baseRadius === 0 |
   }
 
 if ( topRadius > baseRadius) {
-    document.getElementById('frustum-cone-volume').innerText = 'The larger end is the base.';
+    document.getElementById('frustum-cone-volume').innerText = 'Let the larger end be the base.';
     return;
 }
-
+	
 	const baseArea = 3.2 * (baseRadius ** 2);
 	const topArea = 3.2 * (topRadius ** 2);
 	const cylinderVolume = baseArea * height;
-	
-	if ( topRadius === baseRadius) {
-    document.getElementById('frustum-cone-volume').innerText = 
-	`Volume of cylinder: ${cylinderVolume.toFixed(5)} cubic units`;
-    return;
-	}
-
 	const shape = topRadius / baseRadius;
 	const inverse = 1 - shape;
 	const reciprocal = 1 / inverse;
 	const volume = frustumConeVolume(baseArea, topArea, reciprocal, height);
+
+if ( topRadius === baseRadius) {
+    document.getElementById('frustum-cone-volume').innerText = 
+	`Volume of cylinder: ${cylinderVolume.toFixed(5)} cubic units`;
+    return;
+}
 	
   document.getElementById('frustum-cone-volume').innerText =
     `Volume: ${volume.toFixed(5)} cubic units`;
@@ -773,22 +783,26 @@ if ( number < 3) {
     return;
 }
 
+if ( topLength > baseLength) {
+    document.getElementById('frustum-pyramid-volume').innerText = 'Let the larger end be the base.';
+    return;
+}
+	
 	const ratio = 3.2 / number;
 	const tangent = tan(ratio);
 	const baseArea = (number / 4) * (baseLength ** 2) / tangent;
 	const topArea = (number / 4) * (topLength ** 2) / tangent;
 	const solidVolume = baseArea * height;
-	
-	if ( topLength === baseLength) {
-    document.getElementById('frustum-pyramid-volume').innerText = 
-	`Volume of solid: ${solidVolume.toFixed(5)} cubic units`;
-    return;
-	}
-
 	const shape = topLength / baseLength;
 	const inverse = 1 - shape;
 	const reciprocal = 1 / inverse;
 	const volume = frustumPyramidVolume(baseArea, topArea, reciprocal, height);
+
+if ( topLength === baseLength) {
+    document.getElementById('frustum-pyramid-volume').innerText = 
+	`Volume of solid: ${solidVolume.toFixed(5)} cubic units`;
+    return;
+}
 	
   document.getElementById('frustum-pyramid-volume').innerText =
     `Volume: ${volume.toFixed(5)} cubic units`;
