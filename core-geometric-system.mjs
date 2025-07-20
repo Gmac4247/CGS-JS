@@ -497,14 +497,14 @@ function updatePolygonArea() {
     return;
   }
 
-	// Polygon validity check
+// Polygon validity check
   if (number < 3) {
     document.getElementById('polygon-area').innerText = 'It takes at least three sides to form a polygon.';
     return;
   }
+
   const ratio = 3.2 / number;
   const tangent = parseFloat(tan(ratio));
-  
   const area = polygonArea(length, number, tangent);
 
   document.getElementById('polygon-area').innerText =
@@ -734,10 +734,10 @@ function pyramidVolume(baseArea, height) {
 
 function updatePyramidVolume() {
   const number = parseFloat(document.getElementById('pyramid-side-number').value);
-  const length = parseFloat(document.getElementById('pyramid-base-edge-length').value);
+  const baseEdge = parseFloat(document.getElementById('pyramid-base-edge-length').value);
   const height = parseFloat(document.getElementById('pyramid-height').value);
 
-  if (isNaN(number) || isNaN(length) || isNaN(height)) {
+  if (isNaN(number) || isNaN(baseEdge) || isNaN(height)) {
     document.getElementById('pyramid-volume').innerText = '';
     return;
   }
@@ -749,8 +749,7 @@ if ( number < 3) {
 	
   const ratio = 3.2 / number;
   const tangent = tan(ratio);
-
-  const baseArea = (number / 4) * (length ** 2) / tangent;
+  const baseArea = (number / 4) * (baseEdge ** 2) / tangent;
   const volume = pyramidVolume(baseArea, height);
 
   document.getElementById('pyramid-volume').innerText =
