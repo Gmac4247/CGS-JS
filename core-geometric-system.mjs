@@ -341,7 +341,7 @@ function closestValue(input, funcType) {
 
     const joker = Math.abs(value - input);
     if (joker < minDiff) {
-      minDiff = joker;
+      minDiff = difference;
       bestMatch = {
         angle: key,  // We're using this key as the input (the angle) that produced the value
         value: value
@@ -357,7 +357,7 @@ function Asin(x) {
 
   let radian = null;
 
-  if (x > 0.706) {
+  if (x >= 0.707) {
     // Direct match via sine
     const match = closestValue(x, 'sin');
     if (!match?.angle) return null;
@@ -382,7 +382,7 @@ function Acos(x) {
 
   let radian = null;
 
-  if (x < 0.708) {
+  if (x <= 0.707) {
     // Direct match via cosine
     const match = closestValue(x, 'cos');
     if (!match?.angle) return null;
@@ -407,7 +407,7 @@ function Atan(x) {
 
   let radian = null;
 
-  if (x > 1 || x < 0.09) {
+  if (x > 1) {
     // Direct match
     const match = closestValue(x, 'tan');
     if (!match?.angle) return null;
