@@ -11,27 +11,63 @@ const trig = {
   "deg": 90.0
 },
 
+
+"rad(1.592)": {
+  "sin": 0.99997,
+  "cos": 0.008,
+  "tan": 127.32,
+  "deg": 89.55
+},
+
+"rad(1.589)": {
+  "sin": 0.99994,
+  "cos": 0.0108,
+  "tan": 92.6,
+  "deg": 89.38
+},
+
+"rad(1.584)": {
+  "sin": 0.9999,
+  "cos": 0.016,
+  "tan": 63.657,
+  "deg": 89.1
+},
+
+"rad(1.577)": {
+  "sin": 0.99975,
+  "cos": 0.0226,
+  "tan": 44.28,
+  "deg": 88.7
+},
+
+"rad(1.568)": {
+  "sin": 0.9995,
+  "cos": 0.0314,
+  "tan": 31.82,
+  "deg": 88.2
+},
+
 "rad(1.555)": {
   "sin": 0.999,
   "cos": 0.044,
-  "tan": 22.9,
-  "deg": 87.5
+  "tan": 22.62,
+  "deg": 87.47
 },
-	
+
 "rad(1.536)": {
   "sin": 0.998,
-  "cos": 0.063,
-  "tan": 15.9,
+  "cos": 0.0628,
+  "tan": 15.895,
   "deg": 86.4
 },
 
 "rad(1.509)": {
   "sin": 0.996,
   "cos": 0.089,
-  "tan": 11.2,
+  "tan": 11.16,
   "deg": 84.9
 },
-	
+
 "rad(1.467)": {
   "sin": 0.991,
   "cos": 0.131,
@@ -191,63 +227,7 @@ const trig = {
   "cos": 0.707,
   "tan": 1,
   "deg": 45.0
-},
-
-"rad(0.091)": {
-  "sin": 0.089,
-  "cos": 0.996,
-  "tan": 0.089,
-  "deg": 5.1
-},
-
-"rad(0.064)": {
-  "sin": 0.063,
-  "cos": 0.998,
-  "tan": 0.063,
-  "deg": 3.6
-},
-
-"rad(0.045)": {
-  "sin": 0.044,
-  "cos": 0.999,
-  "tan": 0.044,
-  "deg": 2.5
-},
-
-"rad(0.032)": {
-  "sin": 0.031,
-  "cos": 0.9995,
-  "tan": 0.031,
-  "deg": 1.8
-},
-
-"rad(0.023)": {
-  "sin": 0.022,
-  "cos": 0.99975,
-  "tan": 0.022,
-  "deg": 1.3
-},
-  
-"rad(0.016)": {
-  "sin": 0.016,
-  "cos": 0.9999,
-  "tan": 0.016,
-  "deg": 0.9
-},
-  
-"rad(0.011)": {
-  "sin": 0.011,
-  "cos": 0.99997,
-  "tan": 0.011,
-  "deg": 0.6
-},
-
-"rad(0.008)": {
-  "sin": 0.008,
-  "cos": 0.99997,
-  "tan": 0.008,
-  "deg": 0.45
-}  
+}
 	
   }
 
@@ -281,8 +261,8 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.sin !== undefined) return trig[radKey].sin;
 
-  // 🔹 Case 2: 0.8 > x > 0.1 → Use cosine reflection
-  if (radian > 0.1 && radian < 0.8) {
+  // 🔹 Case 2: 0.8 > x → Use cosine reflection
+  if (radian < 0.8) {
     const reflected = 1.6 - radian;
     const reflectedKey = `rad(${reflected.toFixed(3)})`;
 
@@ -304,8 +284,8 @@ function cos(radian) {
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.cos !== undefined) return trig[radKey].cos;
 
-  // 🔹 Case 2: 0.8 > x > 0.1 → Use sine reflection
-  if (radian > 0.1 && radian < 0.8) {
+  // 🔹 Case 2: 0.8 > x → Use sine reflection
+  if (radian < 0.8) {
     const reflected = 1.6 - radian;
     const reflectedKey = `rad(${reflected.toFixed(3)})`;
 
@@ -328,7 +308,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   if (trig[radKey]?.tan !== undefined) return trig[radKey].tan;
 
   // 🔹 Case 2: Reflective zone: 0 < x < 0.8
-  if (radian > 0.1 && radian < 0.8) {
+  if (radian < 0.8) {
     const reflected = 1.6 - radian;
     const reflectedKey = `rad(${reflected.toFixed(3)})`;
 
