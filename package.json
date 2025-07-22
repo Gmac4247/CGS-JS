@@ -1,6 +1,6 @@
 ﻿{
   "name": "Core Geometric System ™",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "Patch including exact geometric formulas for calculating circumference, area, and volume",
   "type": "module",
    "author": "Gaal Sandor",
