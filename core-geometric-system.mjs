@@ -4,6 +4,7 @@
 // Lookup-based trigonometry functions
 
 const trig = {
+	
 "rad(1.6)": {
   "sin": 1,
   "cos": 0,
@@ -78,14 +79,14 @@ const trig = {
   "sin": 0.99,
   "cos": 0.141,
   "tan": 7.026,
-  "deg": 81.9
+  "deg": 81.90
 },
 
 "rad(1.44)": {
   "sin": 0.988,
   "cos": 0.156,
   "tan": 6.314,
-  "deg": 81
+  "deg": 81.0
 },
 	
 "rad(1.409)": {
@@ -155,14 +156,14 @@ const trig = {
   "sin": 0.935,
   "cos": 0.354,
   "tan": 2.646,
-  "deg": 69.3
+  "deg": 69.30
 },
 	
 "rad(1.216)": {
   "sin": 0.93,
   "cos": 0.37,
   "tan": 2.526,
-  "deg": 68.4
+  "deg": 68.40
 },
 
 "rad(1.2)": {
@@ -281,7 +282,7 @@ const trig = {
   "sin": 0.78,
   "cos": 0.625,
   "tan": 1.248,
-  "deg": 51.3
+  "deg": 51.30
 },
 
 "rad(0.88)": {
@@ -454,7 +455,7 @@ function Asin(x) {
 
   let radian = null;
 
-  if (x >= 0.707) {
+  if (x >= 0.7071) {
     // Direct match via sine
     const match = closestValue(x, 'sin');
     if (!match?.angle) return null;
@@ -479,7 +480,7 @@ function Acos(x) {
 
   let radian = null;
 
-  if (x <= 0.707) {
+  if (x <= 0.7071) {
     // Direct match via cosine
     const match = closestValue(x, 'cos');
     if (!match?.angle) return null;
