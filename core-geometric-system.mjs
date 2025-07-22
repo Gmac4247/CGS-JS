@@ -339,8 +339,8 @@ function closestValue(input, funcType) {
     const value = trig[key][funcType];
     if (typeof value !== 'number') continue;
 
-    const joker = Math.abs(value - input);
-    if (joker < minDiff) {
+    const difference = Math.abs(value - input);
+    if (difference < minDiff) {
       minDiff = difference;
       bestMatch = {
         angle: key,  // We're using this key as the input (the angle) that produced the value
@@ -532,11 +532,11 @@ function updateSegmentArea() {
     document.getElementById('segment-area').innerText = '';
     return;
 	}
-	
-  if ( ratio > 1) {
-    document.getElementById('segment-area').innerText = 'A circle-segment is less than half as high as long.';
+
+  if (ratio < 0.11 || ratio > 1) {
+    document.getElementById('segment-area').innerText = 'This ratio is out of range';
     return;
-}
+	}
 
   const angle = parseFloat(2 * Atan(ratio));
   const sine = parseFloat(sin(angle));
