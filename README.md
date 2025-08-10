@@ -3,7 +3,7 @@
 Geometry Patch JavaScript ES Module Library 
 
 <!---
-# Core Geometric System ™ 
+Core Geometric System ™ 
 
 Geometry Patch JavaScript ES Module Library 
 --->
