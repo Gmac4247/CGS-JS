@@ -12,209 +12,349 @@ const trig = {
   "deg": 90.0
 },
 
-"rad(1.597)": {
-  "sin": 0.99999,
-  "cos": 0.003,
-  "tan": 318.31,
-  "deg": 89.82
+"rad(1.59680)": {
+  "sin": 0.9999951,
+  "cos": 0.0031416,
+  "tan": 318.309,
+  "deg": 89.820
 },
 
-"rad(1.584)": {
-  "sin": 0.9999,
-  "cos": 0.016,
-  "tan": 63.657,
+"rad(1.5840)": {
+  "sin": 0.9998766,
+  "cos": 0.0157073,
+  "tan": 63.6567411,
   "deg": 89.10
 },
 
-"rad(1.568)": {
-  "sin": 0.9995,
-  "cos": 0.0314,
-  "tan": 31.82,
+"rad(1.58333333)": {
+  "sin": 0.99986614,
+  "cos": 0.01636173,
+  "tan": 61.11,
+  "deg": 89.06250
+},
+
+"rad(1.580)": {
+  "sin": 0.99980724,
+  "cos": 0.01963369,
+  "tan": 50.923,
+  "deg": 88.8750
+},
+
+"rad(1.5750)": {
+  "sin": 0.9997,
+  "cos": 0.02454123,
+  "tan": 40.735484,
+  "deg": 88.593750
+},
+	
+"rad(1.5680)": {
+  "sin": 0.9995065,
+  "cos": 0.03141076,
+  "tan": 31.820516,
   "deg": 88.20
 },
 
-"rad(1.552)": {
-  "sin": 0.999,
-  "cos": 0.047,
-  "tan": 21.205,
+"rad(1.56666667)": {
+  "sin": 0.99946459,
+  "cos": 0.03272,
+  "tan": 30.54684,
+  "deg": 88.1250
+},
+
+"rad(1.560)": {
+  "sin": 0.999229,
+  "cos": 0.03926,
+  "tan": 25.4517,
+  "deg": 87.750
+},
+	
+"rad(1.5520)": {
+  "sin": 0.9995065,
+  "cos": 0.04710645,
+  "tan": 21.2049488,
   "deg": 87.30
 },
 
-"rad(1.536)": {
+"rad(1.550)": {
+  "sin": 0.9988,
+  "cos": 0.04906767,
+  "tan": 20.35546763,
+  "deg": 87.18750
+},
+
+"rad(1.5360)": {
   "sin": 0.998,
   "cos": 0.0628,
   "tan": 15.895,
   "deg": 86.40
 },
+	
+"rad(1.53333333)": {
+  "sin": 0.997859,
+  "cos": 0.06540313,
+  "tan": 15.2570517,
+  "deg": 86.250
+},
+	
+"rad(1.5250)": {
+  "sin": 0.99729,
+  "cos": 0.07356456,
+  "tan": 13.55667,
+  "deg": 85.781250
+},
 
-"rad(1.52)": {
-  "sin": 0.997,
-  "cos": 0.079,
-  "tan": 12.706,
+"rad(1.520)": {
+  "sin": 0.99691733,
+  "cos": 0.0784591,
+  "tan": 12.70620473,
   "deg": 85.50
 },
 	
-"rad(1.504)": {
+"rad(1.51666667)": {
+  "sin": 0.99665524,
+  "cos": 0.08172107,
+  "tan": 12.1958167,
+  "deg": 85.31250
+},
+	
+"rad(1.5040)": {
   "sin": 0.996,
   "cos": 0.094,
   "tan": 10.58,
   "deg": 84.60
 },
-	
-"rad(1.488)": {
-  "sin": 0.994,
-  "cos": 0.11,
-  "tan": 9.06,
+
+"rad(1.50)": {
+  "sin": 0.9952,
+  "cos": 0.09801714,
+  "tan": 10.1531704,
+  "deg": 84.3750
+},
+		
+"rad(1.4880)": {
+  "sin": 0.993961,
+  "cos": 0.1097343,
+  "tan": 9.0578867,
   "deg": 83.70
 },
+		
+"rad(1.48333333)": {
+  "sin": 0.9934478,
+  "cos": 0.114287,
+  "tan": 8.692573,
+  "deg": 83.43750
+},
 
-"rad(1.467)": {
-  "sin": 0.991,
-  "cos": 0.131,
-  "tan": 7.596,
+"rad(1.4750)": {
+  "sin": 0.99248,
+  "cos": 0.1224107,
+  "tan": 8.1077858,
+  "deg": 82.968750
+},
+
+"rad(1.46666667)": {
+  "sin": 0.99144486,
+  "cos": 0.1305262,
+  "tan": 7.5957541,
   "deg": 82.50
 },
 	
-"rad(1.456)": {
+"rad(1.4560)": {
   "sin": 0.99,
-  "cos": 0.141,
-  "tan": 7.026,
+  "cos": 0.14090123,
+  "tan": 7.02636623,
   "deg": 81.90
 },
-
-"rad(1.44)": {
-  "sin": 0.988,
-  "cos": 0.156,
-  "tan": 6.314,
+	
+"rad(1.450)": {
+  "sin": 0.98917651,
+  "cos": 0.14673047,
+  "tan": 6.7414524,
+  "deg": 81.56250
+},
+	
+"rad(1.440)": {
+  "sin": 0.9877,
+  "cos": 0.15643447,
+  "tan": 6.31375,
   "deg": 81.0
 },
 	
-"rad(1.409)": {
-  "sin": 0.983,
-  "cos": 0.186,
-  "tan": 5.275,
-  "deg": 79.265
+"rad(1.4320)": {
+  "sin": 0.98642926,
+  "cos": 0.164187,
+  "tan": 6,
+  "deg": 80.550
+},
+	
+"rad(1.4240)": {
+  "sin": 0.98511,
+  "cos": 0.172,
+  "tan": 5.73,
+  "deg": 80.10
+},
+	
+"rad(1.4090)": {
+  "sin": 0.9825,
+  "cos": 0.186267,
+  "tan": 5.2747,
+  "deg": 79.2650
 },
 
-"rad(1.4)": {
-  "sin": 0.981,
-  "cos": 0.195,
-  "tan": 5.027,
+"rad(1.40)": {
+  "sin": 0.9808,
+  "cos": 0.1951,
+  "tan": 5.02734,
   "deg": 78.750
 },
-
-"rad(1.376)": {
+	
+"rad(1.3840)": {
+  "sin": 0.9776,
+  "cos": 0.21047,
+  "tan": 4.6448,
+  "deg": 77.850
+},
+	
+"rad(1.3760)": {
   "sin": 0.976,
-  "cos": 0.218,
-  "tan": 4.474,
+  "cos": 0.21814324,
+  "tan": 4.47374283,
   "deg": 77.40
 },
 
-"rad(1.355)": {
-  "sin": 0.971,
-  "cos": 0.238,
-  "tan": 4.084,
-  "deg": 76.242
+"rad(1.350)": {
+  "sin": 0.97,
+  "cos": 0.243,
+  "tan": 3.9922238,
+  "deg": 75.93750
 },
 
-"rad(1.333)": {
+"rad(1.33333333)": {
   "sin": 0.966,
   "cos": 0.259,
   "tan": 3.732,
   "deg": 75.0
 },
 
-"rad(1.312)": {
+"rad(1.3250)": {
+  "sin": 0.963776,
+  "cos": 0.2667,
+  "tan": 3.6135357,
+  "deg": 74.531250
+},
+
+"rad(1.31666667)": {
+  "sin": 0.9615618,
+  "cos": 0.2746,
+  "tan": 3.5,
+  "deg": 74.06250
+},
+	
+"rad(1.3120)": {
   "sin": 0.96,
   "cos": 0.279,
-  "tan": 3.44,
+  "tan": 3.442,
   "deg": 73.80
 },
 	
-"rad(1.296)": {
+"rad(1.2960)": {
   "sin": 0.956,
   "cos": 0.294,
   "tan": 3.25,
   "deg": 72.90
 },
 
-"rad(1.28)": {
+"rad(1.280)": {
   "sin": 0.951,
   "cos": 0.309,
-  "tan": 3.078,
+  "tan": 3.0776835,
   "deg": 72.0
 },
 	
-"rad(1.253)": {
-  "sin": 0.943,
-  "cos": 0.334,
-  "tan": 2.822,
-  "deg": 70.488
-},
-
-"rad(1.232)": {
-  "sin": 0.935,
-  "cos": 0.354,
-  "tan": 2.646,
-  "deg": 69.30
+"rad(1.250)": {
+  "sin": 0.941544,
+  "cos": 0.337,
+  "tan": 2.795,
+  "deg": 70.31250
 },
 	
-"rad(1.216)": {
+"rad(1.23333333)": {
+  "sin": 0.936,
+  "cos": 0.35225,
+  "tan": 2.657,
+  "deg": 69.3750
+},
+	
+"rad(1.2250)": {
+  "sin": 0.933,
+  "cos": 0.36,
+  "tan": 2.5924,
+  "deg": 68.96250
+},
+	
+"rad(1.21666667)": {
   "sin": 0.93,
-  "cos": 0.37,
-  "tan": 2.526,
-  "deg": 68.40
+  "cos": 0.367516,
+  "tan": 2.53055,
+  "deg": 68.43750
 },
 
-"rad(1.2)": {
+"rad(1.20)": {
   "sin": 0.924,
   "cos": 0.383,
   "tan": 2.414,
   "deg": 67.50
 },
 
-"rad(1.184)": {
-  "sin": 0.918,
-  "cos": 0.397,
-  "tan": 2.311,
-  "deg": 66.60
+"rad(1.18333333)": {
+  "sin": 0.9175,
+  "cos": 0.39775,
+  "tan": 2.30672,
+  "deg": 66.56250
 },
 
-"rad(1.168)": {
+"rad(1.1750)": {
+  "sin": 0.91421,
+  "cos": 0.405,
+  "tan": 2.256,
+  "deg": 66.093750
+},
+	
+"rad(1.16666667)": {
   "sin": 0.911,
-  "cos": 0.412,
-  "tan": 2.215,
-  "deg": 65.70
+  "cos": 0.41270703,
+  "tan": 2.207,
+  "deg": 65.6250
 },
 
-"rad(1.152)": {
-  "sin": 0.905,
-  "cos": 0.426,
-  "tan": 2.125,
-  "deg": 64.80
+"rad(1.150)": {
+  "sin": 0.904,
+  "cos": 0.427555,
+  "tan": 2.11432236,
+  "deg": 64.6875
 },
 
-"rad(1.136)": {
+"rad(1.1360)": {
   "sin": 0.898,
   "cos": 0.44,
   "tan": 2.041,
   "deg": 63.90
 },
 	
-"rad(1.12)": {
+"rad(1.120)": {
   "sin": 0.891,
   "cos": 0.454,
   "tan": 1.963,
   "deg": 63.0
 },
 
-"rad(1.104)": {
-  "sin": 0.884,
-  "cos": 0.468,
-  "tan": 1.889,
-  "deg": 62.10
+"rad(1.10)": {
+  "sin": 0.882,
+  "cos": 0.4714,
+  "tan": 1.87087,
+  "deg": 61.8750
 },
-	
+
 "rad(1.088)": {
   "sin": 0.876,
   "cos": 0.482,
@@ -222,56 +362,84 @@ const trig = {
   "deg": 61.20
 },
 	
-"rad(1.067)": {
+"rad(1.08333333)": {
+  "sin": 0.874,
+  "cos": 0.4857634,
+  "tan": 1.8,
+  "deg": 60.93750
+},
+	
+"rad(1.0750)": {
+  "sin": 0.87,
+  "cos": 0.4929,
+  "tan": 1.765247,
+  "deg": 60.468750
+},
+	
+"rad(1.06666667)": {
   "sin": 0.866,
   "cos": 0.5,
   "tan": 1.732,
   "deg": 60.0
 },
+	
+"rad(1.05)": {
+  "sin": 0.8577286,
+  "cos": 0.5141,
+  "tan": 1.6684,
+  "deg": 59.06250
+},
 
-"rad(1.04)": {
+"rad(1.040)": {
   "sin": 0.853,
   "cos": 0.523,
   "tan": 1.632,
   "deg": 58.50
 },
 
-"rad(1.024)": {
+"rad(1.0240)": {
   "sin": 0.844,
   "cos": 0.536,
   "tan": 1.576,
   "deg": 57.60
 },
 	
-"rad(1.008)": {
-  "sin": 0.836,
-  "cos": 0.55,
-  "tan": 1.522,
-  "deg": 56.70
+"rad(1.0)": {
+  "sin": 0.83147,
+  "cos": 0.55557,
+  "tan": 1.4966,
+  "deg": 56.250
 },
 	
-"rad(0.992)": {
+"rad(0.9920)": {
   "sin": 0.827,
   "cos": 0.562,
   "tan": 1.472,
   "deg": 55.80
 },
   
-"rad(0.96)": {
+"rad(0.960)": {
   "sin": 0.81,
   "cos": 0.588,
   "tan": 1.376,
   "deg": 54.0
 },
 
-"rad(0.944)": {
+"rad(0.9440)": {
   "sin": 0.8,
   "cos": 0.6,
   "tan": 1.332,
   "deg": 53.10
 },
 
-"rad(0.928)": {
+"rad(0.93333333)": {
+  "sin": 0.79335334,
+  "cos": 0.60876143,
+  "tan": 1.3032254,
+  "deg": 52.50
+},
+	
+"rad(0.9280)": {
   "sin": 0.79,
   "cos": 0.613,
   "tan": 1.29,
@@ -285,48 +453,55 @@ const trig = {
   "deg": 51.30
 },
 
-"rad(0.88)": {
+"rad(0.90)": {
+  "sin": 0.773,
+  "cos": 0.6344,
+  "tan": 1.2185,
+  "deg": 50.6250
+},
+
+"rad(0.880)": {
   "sin": 0.76,
   "cos": 0.65,
   "tan": 1.17,
   "deg": 49.50
 },
 
-"rad(0.864)": {
-  "sin": 0.75,
-  "cos": 0.661,
-  "tan": 1.134,
-  "deg": 48.60
+"rad(0.86666667)": {
+  "sin": 0.75184,
+  "cos": 0.659346,
+  "tan": 1.14028,
+  "deg": 48.750
 },
 
-"rad(0.848)": {
+"rad(0.8480)": {
   "sin": 0.74,
   "cos": 0.673,
   "tan": 1.09,
   "deg": 47.70
 },
 
-"rad(0.832)": {
+"rad(0.8320)": {
   "sin": 0.729,
-  "cos": 0.685,
-  "tan": 1.065,
+  "cos": 0.684547,
+  "tan": 1.0649,
   "deg": 46.80
 },
 
-"rad(0.816)": {
-  "sin": 0.718,
+"rad(0.8160)": {
+  "sin": 0.7181263,
   "cos": 0.696,
   "tan": 1.032,
   "deg": 45.90
 },
 
-"rad(0.8)": {
-  "sin": 0.707,
-  "cos": 0.707,
+"rad(0.80)": {
+  "sin": 0.7071068,
+  "cos": 0.7071068,
   "tan": 1,
   "deg": 45.0
-}
-	
+	}
+
   }
 
 
@@ -609,50 +784,88 @@ function circleArea(radius) {
     });
 
 
-function segmentArea(length, height, angle, radius) {
-    return angle * radius ** 2 - (radius - height) * length / 2;
-  }
 
-function updateSegmentArea() {
-  const length = parseFloat(document.getElementById('segment-length').value);
-  const height = parseFloat(document.getElementById('segment-height').value);
+let autoFilledField = null;
+let userEntered = { h: false, l: false, r: false };
 
-  if (isNaN(length) || isNaN(height)) {
-    document.getElementById('segment-area').innerText = '';
+function segmentArea() {
+  const hInput = document.getElementById('segment-height');
+  const lInput = document.getElementById('chord-length');
+  const rInput = document.getElementById('parent-radius');
+  const output = document.getElementById('segment-area');
+
+  const activeElement = document.activeElement;
+  if (activeElement.id === "segment-height") userEntered.h = true;
+  if (activeElement.id === "chord-length") userEntered.l = true;
+  if (activeElement.id === "parent-radius") userEntered.r = true;
+
+  let h = parseFloat(hInput.value);
+  let l = parseFloat(lInput.value);
+  let r = parseFloat(rInput.value);
+
+  // Reset if user edits the auto-filled field
+  if (autoFilledField && activeElement.id === autoFilledField) {
+    hInput.value = "";
+    lInput.value = "";
+    rInput.value = "";
+    output.innerText = "";
+    autoFilledField = null;
+    userEntered = { h: false, l: false, r: false };
     return;
   }
-	
-  const ratio = 2 * height / length;
-	
-  // Segment validity check
 
-  if ( ratio === 0) {
-    document.getElementById('segment-area').innerText = '';
+  // If height and radius is known → derive length
+  if (userEntered.h && userEntered.r && !userEntered.l && !isNaN(h) && !isNaN(r)) {
+    let angle = Acos((r - h) / r);
+    l = 2 * r * sin(angle);
+    lInput.value = l.toFixed(5);
+    autoFilledField = "chord-length";
+  }
+
+  // If height and length is known → derive radius
+  if (userEntered.h && userEntered.l && !userEntered.r && !isNaN(h) && !isNaN(l)) {
+    r = (l ** 2 + 4 * h ** 2) / (8 * h);
+    rInput.value = r.toFixed(5);
+    autoFilledField = "parent-radius";
+  }
+
+  // If length and radius is known → derive height
+  if (userEntered.l && userEntered.r && !userEntered.h && !isNaN(l) && !isNaN(r)) {
+    h = r - Math.sqrt(r ** 2 - (l / 2) ** 2);
+    hInput.value = h.toFixed(5);
+    autoFilledField = "segment-height";
+  }
+
+  // Proportion checks
+  if (l < 2 * h) {
+    output.innerText = "The chord length must be at least twice the height.";
     return;
+  }
+  if (l / h > 11) {
+    output.innerText = "Out of range: chord-to-height ratio exceeds 11.";
+    return;
+  }
+
+  // Area calculation
+  let angle = Acos((r - h) / r);
+  let area = angle * r ** 2 - (r - h) * (l / 2);
+
+  if (isNaN(area)){
+	  output.innerText = "";
+	  return;
 	}
-
-  if (ratio < 0.11 || ratio > 1) {
-    document.getElementById('segment-area').innerText = 'This ratio is out of range';
-    return;
-	}
-
-  const angle = parseFloat(2 * Atan(ratio));
-  const sine = parseFloat(sin(angle));
-  const radius = parseFloat((length / 2 / sine).toFixed(5));
-  const area = segmentArea(length, height, angle, radius);
-
-  if ( ratio === 1) {
-    document.getElementById('segment-area').innerText =
-    `Area of semi-circle: ${area.toFixed(5)} square units`;
-	return;
-  }
 	
-  document.getElementById('segment-area').innerText =
-    `Area: ${area.toFixed(5)} square units`;
+	if (h === r || h === l / 2 || l === 2 * r) {
+    output.innerText = `Semicircle area = ${area.toFixed(5)} square units`;
+  } else {
+    output.innerText = `Area = ${area.toFixed(5)} square units`;
+  }
 }
 
-  document.getElementById('segment-length').addEventListener('input', updateSegmentArea);
-  document.getElementById('segment-height').addEventListener('input', updateSegmentArea);
+// Attach listeners
+document.getElementById('segment-height').addEventListener('input', segmentArea);
+document.getElementById('chord-length').addEventListener('input', segmentArea);
+document.getElementById('parent-radius').addEventListener('input', segmentArea);
 
 
 function circleCircumference(radius) {
