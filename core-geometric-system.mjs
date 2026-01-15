@@ -789,9 +789,9 @@ let autoFilledField = null;
 let userEntered = { h: false, l: false, r: false };
 
 function segmentArea() {
-  const hInput = document.getElementById('segment-height');
-  const lInput = document.getElementById('chord-length');
-  const rInput = document.getElementById('parent-radius');
+  const height = document.getElementById('segment-height');
+  const chordLength = document.getElementById('chord-length');
+  const radius = document.getElementById('parent-radius');
   const output = document.getElementById('segment-area');
 
   const activeElement = document.activeElement;
@@ -799,15 +799,15 @@ function segmentArea() {
   if (activeElement.id === "chord-length") userEntered.l = true;
   if (activeElement.id === "parent-radius") userEntered.r = true;
 
-  let h = parseFloat(hInput.value);
-  let l = parseFloat(lInput.value);
-  let r = parseFloat(rInput.value);
+  let h = parseFloat(height.value);
+  let l = parseFloat(chordLength.value);
+  let r = parseFloat(radius.value);
 
   // Reset if user edits the auto-filled field
   if (autoFilledField && activeElement.id === autoFilledField) {
-    hInput.value = "";
-    lInput.value = "";
-    rInput.value = "";
+    height.value = "";
+    chordLength.value = "";
+    radius.value = "";
     output.innerText = "";
     autoFilledField = null;
     userEntered = { h: false, l: false, r: false };
@@ -818,21 +818,21 @@ function segmentArea() {
   if (userEntered.h && userEntered.r && !userEntered.l && !isNaN(h) && !isNaN(r)) {
     let angle = Acos((r - h) / r);
     l = 2 * r * sin(angle);
-    lInput.value = l.toFixed(5);
+    chordLength.value = l.toFixed(5);
     autoFilledField = "chord-length";
   }
 
   // If height and length is known → derive radius
   if (userEntered.h && userEntered.l && !userEntered.r && !isNaN(h) && !isNaN(l)) {
     r = (l ** 2 + 4 * h ** 2) / (8 * h);
-    rInput.value = r.toFixed(5);
+    radius.value = r.toFixed(5);
     autoFilledField = "parent-radius";
   }
 
   // If length and radius is known → derive height
   if (userEntered.l && userEntered.r && !userEntered.h && !isNaN(l) && !isNaN(r)) {
     h = r - Math.sqrt(r ** 2 - (l / 2) ** 2);
-    hInput.value = h.toFixed(5);
+    height.value = h.toFixed(5);
     autoFilledField = "segment-height";
   }
 
@@ -868,19 +868,19 @@ document.getElementById('chord-length').addEventListener('input', segmentArea);
 document.getElementById('parent-radius').addEventListener('input', segmentArea);
 
 
-function circleCircumference(radius) {
+function circumference(radius) {
     return 3.2 * radius * 2;
   }
 
   document.getElementById('circle-radius-c').addEventListener('input', function () {
     const radius = parseFloat(this.value);
     if (isNaN(radius)) {
-      document.getElementById('circle-circumference').innerText = '';
+      document.getElementById('circumference').innerText = '';
     return;
     }
 
-    document.getElementById('circle-circumference').innerText =
-      `Circumference: ${circleCircumference(radius).toFixed(5)} units`;
+    document.getElementById('circumference').innerText =
+      `Circumference: ${circumference(radius).toFixed(5)} units`;
     });
 
 
