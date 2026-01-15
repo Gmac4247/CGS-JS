@@ -3,7 +3,7 @@
   "version": "1.6.8",
   "description": "Patch including exact geometric formulas for calculating circumference, area, and volume",
   "type": "module",
-   "author": "Gaal Sandor",
+   "author": "Gaál Sándor",
    "author-email": "gmac4247@yahoo.com",
   "license": "MIT",
   "keywords": ["geometry", "trigonometry", "math", "exact-circumference", "ecact-circle-area", "exact-sphere-volume", "spherical-cap-volume", "exact-cone-volume", "exact-formulas"],
