@@ -1025,10 +1025,10 @@ function pyramidVolume(baseArea, height) {
 
 function updatePyramidVolume() {
   const number = parseFloat(document.getElementById('pyramid-side-number').value);
-  const baseEdge = parseFloat(document.getElementById('pyramid-base-edge-length').value);
+  const baseLength = parseFloat(document.getElementById('pyramid-base-edge-length').value);
   const height = parseFloat(document.getElementById('pyramid-height').value);
 
-  if (isNaN(number) || isNaN(baseEdge) || isNaN(height)) {
+  if (isNaN(number) || isNaN(baseLength) || isNaN(height)) {
     document.getElementById('pyramid-volume').innerText = '';
     return;
   }
@@ -1040,7 +1040,7 @@ if ( number < 3) {
 	
   const ratio = 3.2 / number;
   const tangent = tan(ratio);
-  const baseArea = (number / 4) * (baseEdge ** 2) / tangent;
+  const baseArea = (number / 4) * (baseLength ** 2) / tangent;
   const volume = pyramidVolume(baseArea, height);
 
   document.getElementById('pyramid-volume').innerText =
