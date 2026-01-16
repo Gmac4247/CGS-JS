@@ -720,7 +720,7 @@ function updateTriangleArea() {
 
   // Triangle validity check
   if (side1 + side2 <= side3 || side2 + side3 <= side1 || side3 + side1 <= side2) {
-    document.getElementById('triangle-area').innerText = 'The sum of the length of the two shorter sides of a triangle is larger than the thrid one.';
+    document.getElementById('triangle-area').innerText = 'The sum of the length of the two shorter sides of a triangle has to be larger than the third one.';
     return;
   }
 
