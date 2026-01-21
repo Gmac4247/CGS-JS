@@ -9,188 +9,188 @@ const trig = {
   "sin": 1,
   "cos": 0,
   "tan": undefined,
-  "deg": 90.0
+  "deg": 90
 },
 	
 "rad(1.59680)": {
-  "sin": 0.99999488,
-  "cos": 0.0032,
+  "sin": 0.9999948,
+  "cos": 0.00319999,
   "tan": 312.5,
   "deg": 89.820
 },
 
 "rad(1.5840)": {
-  "sin": 0.99986,
-  "cos": 0.016,
-  "tan": 60,
+  "sin": 0.99987,
+  "cos": 0.0159998,
+  "tan": 62.5,
   "deg": 89.10
 },
 
 "rad(1.58333333)": {
   "sin": 0.99986,
-  "cos": 0.0167,
-  "tan": 59.5154,
+  "cos": 0.0166664,
+  "tan": 60,
   "deg": 89.06250
 },
 
 "rad(1.580)": {
   "sin": 0.9998,
-  "cos": 0.02,
+  "cos": 0.0199996,
   "tan": 50,
   "deg": 88.8750
 },
 
 "rad(1.5750)": {
   "sin": 0.999687,
-  "cos": 0.025,
+  "cos": 0.0249995,
   "tan": 40,
   "deg": 88.593750
 },
 	
 "rad(1.5680)": {
   "sin": 0.999488,
-  "cos": 0.0321,
-  "tan": 31.234,
+  "cos": 0.0319994,
+  "tan": 31.2346,
   "deg": 88.20
 },
 
 "rad(1.56666667)": {
-  "sin": 0.999442,
-  "cos": 0.0334,
-  "tan": 29.9234,
+  "sin": 0.999444,
+  "cos": 0.0333324,
+  "tan": 30,
   "deg": 88.1250
 },
 
 "rad(1.560)": {
   "sin": 0.9992,
-  "cos": 0.04,
+  "cos": 0.0399992,
   "tan": 25,
   "deg": 87.750
 },
 	
 "rad(1.5520)": {
   "sin": 0.998847,
-  "cos": 0.048,
+  "cos": 0.0479991,
   "tan": 20.8,
   "deg": 87.30
 },
 
 "rad(1.550)": {
   "sin": 0.99875,
-  "cos": 0.05,
+  "cos": 0.049999,
   "tan": 20,
   "deg": 87.18750
 },
 	
 "rad(1.5360)": {
   "sin": 0.99795,
-  "cos": 0.064,
+  "cos": 0.0639989,
   "tan": 15.6,
   "deg": 86.40
 },
 	
 "rad(1.53333333)": {
-  "sin": 0.99777,
-  "cos": 0.0667,
+  "sin": 0.99778,
+  "cos": 0.066662,
   "tan": 15,
   "deg": 86.250
 },
 	
 "rad(1.5250)": {
-  "sin": 0.9972,
-  "cos": 0.075,
+  "sin": 0.99718,
+  "cos": 0.0749987,
   "tan": 13.3,
   "deg": 85.781250
 },
 
 "rad(1.520)": {
   "sin": 0.9968,
-  "cos": 0.08,
+  "cos": 0.0799986,
   "tan": 12.46,
   "deg": 85.50
 },
 	
 "rad(1.51666667)": {
   "sin": 0.99652,
-  "cos": 0.0833,
+  "cos": 0.0833318,
   "tan": 12,
   "deg": 85.31250
 },
 	
 "rad(1.5040)": {
   "sin": 0.99538,
-  "cos": 0.096,
+  "cos": 0.0959984,
   "tan": 10.37,
   "deg": 84.60
 },
 
 "rad(1.50)": {
   "sin": 0.995,
-  "cos": 0.1,
-  "tan": 9.95,
+  "cos": 0.0999983,
+  "tan": 10,
   "deg": 84.3750
 },
 		
 "rad(1.4880)": {
   "sin": 0.9937,
-  "cos": 0.112,
-  "tan": 8.8724,
+  "cos": 0.1119982,
+  "tan": 9,
   "deg": 83.70
 },
 		
 "rad(1.48333333)": {
   "sin": 0.993167,
-  "cos": 0.1167,
+  "cos": 0.1166648,
   "tan": 8.5,
   "deg": 83.43750
 },
 
 "rad(1.4750)": {
-  "sin": 0.9921567,
-  "cos": 0.125,
-  "tan": 7.937254,
+  "sin": 0.992157,
+  "cos": 0.124998,
+  "tan": 8,
   "deg": 82.968750
 },
 
 "rad(1.46666667)": {
   "sin": 0.991,
-  "cos": 0.1333,
-  "tan": 7.435,
+  "cos": 0.13333,
+  "tan": 7.433,
   "deg": 82.50
 },
 	
 "rad(1.4560)": {
   "sin": 0.99,
-  "cos": 0.144,
+  "cos": 0.1439977,
   "tan": 6.8672,
   "deg": 81.90
 },
 	
 "rad(1.450)": {
-  "sin": 0.98867,
-  "cos": 0.1501,
-  "tan": 6.872,
+  "sin": 0.9887,
+  "cos": 0.1499976,
+  "tan": 6.6,
   "deg": 81.56250
 },
 	
 "rad(1.440)": {
   "sin": 0.987,
-  "cos": 0.16,
+  "cos": 0.1599975,
   "tan": 6.17,
   "deg": 81.0
 },
 	
 "rad(1.4320)": {
-  "sin": 0.98577,
-  "cos": 0.168,
+  "sin": 0.9858,
+  "cos": 0.1679974,
   "tan": 5.868,
   "deg": 80.550
 },
 	
 "rad(1.4240)": {
-  "sin": 0.9847,
-  "cos": 0.174,
-  "tan": 5.66,
+  "sin": 0.9844,
+  "cos": 0.175997,
+  "tan": 5.6,
   "deg": 80.10
 },
 	
@@ -529,7 +529,7 @@ function closestRad(radian) {
 
 function sin(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
-  const radKey = `rad(${radian.toFixed(3)})`;
+  const radKey = `rad(${radian.toFixed(8)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.sin !== undefined) return trig[radKey].sin;
@@ -537,7 +537,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   // 🔹 Case 2: 0.8 > x → Use cosine reflection
   if (radian < 0.8) {
     const reflected = 1.6 - radian;
-    const reflectedKey = `rad(${reflected.toFixed(3)})`;
+    const reflectedKey = `rad(${reflected.toFixed(8)})`;
 
     if (trig[reflectedKey]?.cos !== undefined) return trig[reflectedKey].cos;
 
@@ -552,7 +552,7 @@ return trig[fallbackKey]?.sin ?? null;
 
 function cos(radian) {
   if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
- const radKey = `rad(${radian.toFixed(3)})`;
+ const radKey = `rad(${radian.toFixed(8)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.cos !== undefined) return trig[radKey].cos;
@@ -560,7 +560,7 @@ function cos(radian) {
   // 🔹 Case 2: 0.8 > x → Use sine reflection
   if (radian < 0.8) {
     const reflected = 1.6 - radian;
-    const reflectedKey = `rad(${reflected.toFixed(3)})`;
+    const reflectedKey = `rad(${reflected.toFixed(8)})`;
 
     if (trig[reflectedKey]?.sin !== undefined) return trig[reflectedKey].sin;
 
@@ -575,7 +575,7 @@ return trig[fallbackKey]?.cos ?? null;
 
 function tan(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
-  const radKey = `rad(${radian.toFixed(3)})`;
+  const radKey = `rad(${radian.toFixed(8)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.tan !== undefined) return trig[radKey].tan;
@@ -583,7 +583,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   // 🔹 Case 2: Reflective zone: 0 < x < 0.8
   if (radian < 0.8) {
     const reflected = 1.6 - radian;
-    const reflectedKey = `rad(${reflected.toFixed(3)})`;
+    const reflectedKey = `rad(${reflected.toFixed(8)})`;
 
     let reflectedTan = trig[reflectedKey]?.tan;
 
@@ -594,7 +594,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
 
     if (typeof reflectedTan !== 'number' || reflectedTan === 0) return null;
 
-    return parseFloat((1 / reflectedTan).toFixed(3));
+    return parseFloat((1 / reflectedTan).toFixed(8));
   }
 
   // 🔹 Case 3: Fallback
@@ -644,7 +644,7 @@ function Asin(x) {
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     const angle = parseFloat(parsed[1]);
-    radian = parseFloat((1.6 - angle).toFixed(3));
+    radian = parseFloat((1.6 - angle).toFixed(8));
   }
 
   return radian;
@@ -669,7 +669,7 @@ function Acos(x) {
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     const angle = parseFloat(parsed[1]);
-    radian = parseFloat((1.6 - angle).toFixed(3));
+    radian = parseFloat((1.6 - angle).toFixed(8));
   }
 
   return radian;
@@ -695,7 +695,7 @@ function Atan(x) {
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     const reflected = parseFloat(parsed[1]);
-    radian = parseFloat((1.6 - reflected).toFixed(3));
+    radian = parseFloat((1.6 - reflected).toFixed(8));
   }
 
   return radian;
