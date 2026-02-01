@@ -85,5 +85,6 @@ I reckon its accuracy is about 0.5°. That can be customly improved by adding en
 
 It is meant for use within my framework to calculate area and volume of complex shapes. 
 
-See my website for example usage. 
+See my website for example usage:
+https://basic-geometry.github.io
 
