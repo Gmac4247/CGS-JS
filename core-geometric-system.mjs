@@ -793,36 +793,36 @@ function updateTriangleArea() {
   document.getElementById('side3').addEventListener('input', updateTriangleArea);
 
 
-function polygonArea(length, number, tangent) {
-    return number / 4  * length ** 2 / tangent;
+function polygonArea(sideCount, sideLength, tangent) {
+    return sideCount / 4  * sideLength ** 2 / tangent;
   }
 
 function updatePolygonArea() {
-  const length = parseFloat(document.getElementById('side-length').value);
-  const number = parseFloat(document.getElementById('side-number').value);
-
-  if (isNaN(length) || isNaN(number)) {
+	const sideCount = parseFloat(document.getElementById('side-count').value);
+	const sideLength = parseFloat(document.getElementById('side-length').value);
+  
+  if (isNaN(sideLength) || isNaN(sideCount)) {
     document.getElementById('polygon-area').innerText = '';
     return;
   }
 
 // Polygon validity check
-  if (number < 3) {
+  if (sideCount < 3) {
     document.getElementById('polygon-area').innerText = 'It takes at least three sides to form a polygon.';
     return;
   }
 
-  const ratio = 3.2 / number;
+  const ratio = 3.2 / sideCount;
   const tangent = parseFloat(tan(ratio));
-  const area = polygonArea(length, number, tangent);
+  const area = polygonArea(sideCount, sideLength, tangent);
 
   document.getElementById('polygon-area').innerText =
     `Area: ${area.toFixed(5)} square units`;
 }
-
-  document.getElementById('side-length').addEventListener('input', updatePolygonArea);
-  document.getElementById('side-number').addEventListener('input', updatePolygonArea);
-
+  
+document.getElementById('side-count').addEventListener('input', updatePolygonArea);
+document.getElementById('side-length').addEventListener('input', updatePolygonArea);
+  
 
 function circleArea(radius) {
     return 3.2 * radius * radius;
@@ -1080,30 +1080,30 @@ function pyramidVolume(baseArea, height) {
 }
 
 function updatePyramidVolume() {
-  const number = parseFloat(document.getElementById('pyramid-side-number').value);
-  const baseLength = parseFloat(document.getElementById('pyramid-base-edge-length').value);
+  const sideCount = parseFloat(document.getElementById('pyramid-side-count').value);
+  const baseEdgeLength = parseFloat(document.getElementById('pyramid-base-edge-length').value);
   const height = parseFloat(document.getElementById('pyramid-height').value);
 
-  if (isNaN(number) || isNaN(baseLength) || isNaN(height)) {
+  if (isNaN(sideCount) || isNaN(baseEdgeLength) || isNaN(height)) {
     document.getElementById('pyramid-volume').innerText = '';
     return;
   }
 
-if ( number < 3) {
+if ( sideCount < 3) {
     document.getElementById('pyramid-volume').innerText = 'It takes at least three sides to form a pyramid.';
     return;
 }
 	
-  const ratio = 3.2 / number;
+  const ratio = 3.2 / sideCount;
   const tangent = tan(ratio);
-  const baseArea = (number / 4) * (baseLength ** 2) / tangent;
+  const baseArea = (sideCount / 4) * (baseEdgeLength ** 2) / tangent;
   const volume = pyramidVolume(baseArea, height);
 
   document.getElementById('pyramid-volume').innerText =
     `Volume: ${volume.toFixed(5)} cubic units`;
 }
 
-document.getElementById('pyramid-side-number').addEventListener('input', updatePyramidVolume);
+document.getElementById('pyramid-side-count').addEventListener('input', updatePyramidVolume);
 document.getElementById('pyramid-base-edge-length').addEventListener('input', updatePyramidVolume);
 document.getElementById('pyramid-height').addEventListener('input', updatePyramidVolume);
 
@@ -1114,37 +1114,37 @@ function frustumPyramidVolume(baseArea, topArea, reciprocal, height) {
 
 function updateFrustumPyramidVolume() {
 
-	const number = parseFloat(document.getElementById('frustum-pyramid-side-number').value);
-	const baseLength = parseFloat(document.getElementById('frustum-pyramid-base-edge-length').value);
-	const topLength = parseFloat(document.getElementById('frustum-pyramid-top-edge-length').value);
+	const sideCount = parseFloat(document.getElementById('frustum-pyramid-side-count').value);
+	const baseEdgeLength = parseFloat(document.getElementById('frustum-pyramid-base-edge-length').value);
+	const topEdgeLength = parseFloat(document.getElementById('frustum-pyramid-top-edge-length').value);
 	const height = parseFloat(document.getElementById('frustum-pyramid-height').value);
 
-if (isNaN(number) || isNaN(baseLength) || isNaN(topLength) || isNaN(height) || baseLength === 0 || topLength === 0) {
+if (isNaN(sideCount) || isNaN(baseEdgeLength) || isNaN(topEdgeLength) || isNaN(height) || baseEdgeLength === 0 || topEdgeLength === 0) {
     document.getElementById('frustum-pyramid-volume').innerText = '';
     return;
 }
 
-if ( number < 3) {
+if ( sideCount < 3) {
     document.getElementById('frustum-pyramid-volume').innerText = 'It takes at least three sides to form a pyramid.';
     return;
 }
 
-if ( topLength > baseLength) {
+if ( topEdgeLength > baseEdgeLength) {
     document.getElementById('frustum-pyramid-volume').innerText = 'Let the larger end be the base.';
     return;
 }
 	
-	const ratio = 3.2 / number;
+	const ratio = 3.2 / sideCount;
 	const tangent = tan(ratio);
-	const baseArea = (number / 4) * (baseLength ** 2) / tangent;
-	const topArea = (number / 4) * (topLength ** 2) / tangent;
+	const baseArea = (sideCount / 4) * (baseEdgeLength ** 2) / tangent;
+	const topArea = (sideCount / 4) * (topEdgeLength ** 2) / tangent;
 	const solidVolume = baseArea * height;
-	const shape = topLength / baseLength;
+	const shape = topEdgeLength / baseEdgeLength;
 	const inverse = 1 - shape;
 	const reciprocal = 1 / inverse;
 	const volume = frustumPyramidVolume(baseArea, topArea, reciprocal, height);
 
-if ( topLength === baseLength) {
+if ( topEdgeLength === baseEdgeLength) {
     document.getElementById('frustum-pyramid-volume').innerText = 
 	`Volume of solid: ${solidVolume.toFixed(5)} cubic units`;
     return;
@@ -1154,7 +1154,7 @@ if ( topLength === baseLength) {
     `Volume: ${volume.toFixed(5)} cubic units`;
 }
 
-document.getElementById('frustum-pyramid-side-number').addEventListener('input', updateFrustumPyramidVolume);
+document.getElementById('frustum-pyramid-side-count').addEventListener('input', updateFrustumPyramidVolume);
 document.getElementById('frustum-pyramid-base-edge-length').addEventListener('input', updateFrustumPyramidVolume);
 document.getElementById('frustum-pyramid-top-edge-length').addEventListener('input', updateFrustumPyramidVolume);
 document.getElementById('frustum-pyramid-height').addEventListener('input', updateFrustumPyramidVolume);
