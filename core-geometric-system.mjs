@@ -3,7 +3,7 @@
 
 // Lookup-based approximate trigonometric values
 
-const trig = {
+export const trig = {
 
 "rad(1.59680)": {
   "sin": 0.999995,
@@ -563,7 +563,7 @@ const trig = {
 
 // Helper to find closest rad(x) match for given function (sin, cos or tan)
 
-function closestRad(radian) {
+export function closestRad(radian) {
   let closestKey = null;
   let minDiff = Infinity;
 
@@ -583,7 +583,7 @@ function closestRad(radian) {
   return closestKey ?? null;
 }
 
-function sin(radian) {
+export function sin(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
   const radKey = `rad(${radian.toFixed(8)})`;
 
@@ -606,7 +606,7 @@ return trig[fallbackKey]?.cos ?? null;
 return trig[fallbackKey]?.sin ?? null;
 }
 
-function cos(radian) {
+export function cos(radian) {
   if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
  const radKey = `rad(${radian.toFixed(8)})`;
 
@@ -629,7 +629,7 @@ return trig[fallbackKey]?.sin ?? null;
 return trig[fallbackKey]?.cos ?? null;
 }
 
-function tan(radian) {
+export function tan(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
   const radKey = `rad(${radian.toFixed(8)})`;
 
@@ -660,7 +660,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
 
 // Helper to find closest match for given inverse function (Asin, Acos or Atan)
 	
-function closestValue(input, funcType) {
+export function closestValue(input, funcType) {
   let bestMatch = null;
   let minDiff = Infinity;
 
@@ -706,7 +706,7 @@ function Asin(x) {
   return radian;
 }
 
-function Acos(x) {
+export function Acos(x) {
   if (typeof x !== 'number' || isNaN(x) || x < 0 || x > 1) return null;
 
   let radian = null;
@@ -731,7 +731,7 @@ function Acos(x) {
   return radian;
 }
 
-function Atan(x) {
+export function Atan(x) {
   if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
 
   let radian = null;
@@ -760,11 +760,11 @@ function Atan(x) {
 
 // The properties of shapes 
 
-function triangleArea(product) {
+export function triangleArea(product) {
   return Math.sqrt(product);
 }
 
-function updateTriangleArea() {
+export function updateTriangleArea() {
   const side1 = parseFloat(document.getElementById('side1').value);
   const side2 = parseFloat(document.getElementById('side2').value);
   const side3 = parseFloat(document.getElementById('side3').value);
@@ -793,11 +793,11 @@ function updateTriangleArea() {
   document.getElementById('side3').addEventListener('input', updateTriangleArea);
 
 
-function polygonArea(sideCount, sideLength, tangent) {
+export function polygonArea(sideCount, sideLength, tangent) {
     return sideCount / 4  * sideLength ** 2 / tangent;
   }
 
-function updatePolygonArea() {
+export function updatePolygonArea() {
 	const sideCount = parseFloat(document.getElementById('side-count').value);
 	const sideLength = parseFloat(document.getElementById('side-length').value);
   
@@ -824,7 +824,7 @@ document.getElementById('side-count').addEventListener('input', updatePolygonAre
 document.getElementById('side-length').addEventListener('input', updatePolygonArea);
   
 
-function circleArea(radius) {
+export function circleArea(radius) {
     return 3.2 * radius * radius;
   }
 
@@ -844,7 +844,7 @@ function circleArea(radius) {
 let autoFilledField = null;
 let userEntered = { h: false, l: false, r: false };
 
-function segmentArea() {
+export function segmentArea() {
   const height = document.getElementById('segment-height');
   const chordLength = document.getElementById('chord-length');
   const radius = document.getElementById('parent-radius');
@@ -924,7 +924,7 @@ document.getElementById('chord-length').addEventListener('input', segmentArea);
 document.getElementById('parent-radius').addEventListener('input', segmentArea);
 
 
-function circumference(radius) {
+export function circumference(radius) {
     return 3.2 * radius * 2;
   }
 
@@ -940,7 +940,7 @@ function circumference(radius) {
     });
 
 
-function sphereVolume(radius) {
+export function sphereVolume(radius) {
     return Math.pow(Math.sqrt(3.2) * radius, 3);
   }
 
@@ -956,11 +956,11 @@ function sphereVolume(radius) {
     });
 
 
-function capVolume(radius, height) {
+export function capVolume(radius, height) {
     return 1.6 * radius * radius * height * Math.sqrt(3.2);
   }
 
-  function updateCapVolume() {
+  export function updateCapVolume() {
     const radius = parseFloat(document.getElementById('cap-radius').value);
     const height = parseFloat(document.getElementById('cap-height').value);
 
@@ -990,11 +990,11 @@ if ( height === radius) {
   document.getElementById('cap-height').addEventListener('input', updateCapVolume);
 
 
-function coneVolume(radius, height) {
+export function coneVolume(radius, height) {
     return 3.2 * radius * radius * height / Math.sqrt(8);
   }
 
-  function updateConeVolume() {
+  export function updateConeVolume() {
     const radius = parseFloat(document.getElementById('cone-radius-v').value);
     const height = parseFloat(document.getElementById('cone-height-v').value);
 
@@ -1011,11 +1011,11 @@ function coneVolume(radius, height) {
   document.getElementById('cone-height-v').addEventListener('input', updateConeVolume);
 
 
-function frustumConeVolume(baseArea, topArea, reciprocal, height) {
+export function frustumConeVolume(baseArea, topArea, reciprocal, height) {
   return height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
 }
 
-function updateFrustumConeVolume() {
+export function updateFrustumConeVolume() {
 
 	const baseRadius = parseFloat(document.getElementById('frustum-cone-base-radius').value);
 	const topRadius = parseFloat(document.getElementById('frustum-cone-top-radius').value);
@@ -1054,11 +1054,11 @@ document.getElementById('frustum-cone-top-radius').addEventListener('input', upd
 document.getElementById('frustum-cone-height').addEventListener('input', updateFrustumConeVolume);
 
 
-function coneSurface(radius, height) {
+export function coneSurface(radius, height) {
     return 3.2 * radius * (radius + Math.sqrt(radius ** 2 + height ** 2));
   }
 
-  function updateConeSurface() {
+  export function updateConeSurface() {
     const radius = parseFloat(document.getElementById('cone-radius-s').value);
     const height = parseFloat(document.getElementById('cone-height-s').value);
 
@@ -1075,11 +1075,11 @@ function coneSurface(radius, height) {
   document.getElementById('cone-height-s').addEventListener('input', updateConeSurface);
 
 
-function pyramidVolume(baseArea, height) {
+export function pyramidVolume(baseArea, height) {
   return baseArea * height / Math.sqrt(8);
 }
 
-function updatePyramidVolume() {
+export function updatePyramidVolume() {
   const sideCount = parseFloat(document.getElementById('pyramid-side-count').value);
   const baseEdgeLength = parseFloat(document.getElementById('pyramid-base-edge-length').value);
   const height = parseFloat(document.getElementById('pyramid-height').value);
@@ -1108,11 +1108,11 @@ document.getElementById('pyramid-base-edge-length').addEventListener('input', up
 document.getElementById('pyramid-height').addEventListener('input', updatePyramidVolume);
 
   
-function frustumPyramidVolume(baseArea, topArea, reciprocal, height) {
+export function frustumPyramidVolume(baseArea, topArea, reciprocal, height) {
   return height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
 }
 
-function updateFrustumPyramidVolume() {
+export function updateFrustumPyramidVolume() {
 
 	const sideCount = parseFloat(document.getElementById('frustum-pyramid-side-count').value);
 	const baseEdgeLength = parseFloat(document.getElementById('frustum-pyramid-base-edge-length').value);
@@ -1160,7 +1160,7 @@ document.getElementById('frustum-pyramid-top-edge-length').addEventListener('inp
 document.getElementById('frustum-pyramid-height').addEventListener('input', updateFrustumPyramidVolume);
 
 
-function tetrahedronVolume(edge) {
+export function tetrahedronVolume(edge) {
     return Math.pow(edge, 3) / 8;
   }
 
